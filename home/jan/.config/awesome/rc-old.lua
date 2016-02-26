@@ -11,9 +11,6 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
--- launch the cairo-compmgr for transparency
-awful.util.spawn_with_shell("cairo-compmgr &")
-
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -102,15 +99,15 @@ myawesomemenu = {
 
 -- Create a power widget
 powermenu = {
-  { "shutdown", terminal .. "shutdown -h now" },
+  { "shutdown", terminal .. "shutdown now" },
   { "reboot", terminal .. "reboot" }
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "open terminal", terminal },
-                                    { "file manager", "dolphin" },
+                                    { "file manager", "nautilus" },
                                     { "browser", "firefox" },
-                                    { "sublime text", "subl3" },
+                                    { "sublime text", "subl newdoc" },
                                     { "power" , powermenu }
                                   }
                         })
@@ -194,7 +191,7 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", height = "30", screen = s })
+    mywibox[s] = awful.wibox({ position = "top", screen = s })
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
@@ -372,8 +369,7 @@ awful.rules.rules = {
                      focus = awful.client.focus.filter,
                      raise = true,
                      keys = clientkeys,
-                     buttons = clientbuttons
-                     } },
+                     buttons = clientbuttons } },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
     { rule = { class = "pinentry" },

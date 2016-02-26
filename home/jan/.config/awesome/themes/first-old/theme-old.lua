@@ -4,17 +4,15 @@
 
 theme = {}
 
-theme.font          = "sans 10"
+theme.font          = "sans 8"
 
-alpha = "55"
-
-theme.bg_normal     = "#333333" .. alpha -- "#222222"
-theme.bg_focus      = "#ff9800"
+theme.bg_normal     = "#222222"
+theme.bg_focus      = "#535d6c"
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#ffffff" -- "#aaaaaa"
+theme.fg_normal     = "#aaaaaa"
 theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
@@ -78,7 +76,7 @@ theme.titlebar_maximized_button_focus_inactive  = theme_path .. "/titlebar/maxim
 theme.titlebar_maximized_button_normal_active = theme_path .. "/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = theme_path .. "/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = theme_path .. "/background.png"
+theme.wallpaper = theme_path .. "/background.jpg"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = theme_path .. "/layouts/fairh.png"
@@ -94,7 +92,7 @@ theme.layout_tiletop = theme_path .. "/layouts/tiletop.png"
 theme.layout_spiral  = theme_path .. "/layouts/spiral.png"
 theme.layout_dwindle = theme_path .. "/layouts/dwindle.png"
 
-theme.awesome_icon = theme_path .. "/icons/awesome32.png"
+theme.awesome_icon = theme_path .. "/icons/awesome16.png"
 
 -- Define the icon theme for application icons. If not set then the icons 
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
