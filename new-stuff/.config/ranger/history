@@ -1,0 +1,21 @@
+zs
+sh
+AliasCommand 
+kkkkkkkkkkkkjkkkkkkkkkkQ
+set show_hidden TRUE
+cd .config/
+zh
+yh
+Q
+open_with h
+cd  
+mkdir mpd/
+cp /usr/share/doc/mpd/mpdconf.example ~/.config/mpd/mpd.conf
+open_with 
+mpd ~/.config/mpd/mpd.conf
+select help
+man
+m
+help
+delete
+
