@@ -1,0 +1,18 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Color Highlighter",
+		"Colorcoder",
+		"Colorsublime",
+		"Package Control",
+		"SideBarEnhancements",
+		"SideBarFolders",
+		"SideBarGit",
+		"SidebarSeparator",
+		"SyncedSidebarBg"
+	]
+}

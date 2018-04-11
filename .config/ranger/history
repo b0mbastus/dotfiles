@@ -1,0 +1,33 @@
+zs
+sh
+AliasCommand 
+kkkkkkkkkkkkjkkkkkkkkkkQ
+set show_hidden TRUE
+cd .config/
+zh
+yh
+Q
+open_with h
+cd  
+mkdir mpd/
+cp /usr/share/doc/mpd/mpdconf.example ~/.config/mpd/mpd.conf
+mpd ~/.config/mpd/mpd.conf
+select help
+man
+m
+delete
+open_with k
+mkdir Sandbox
+mkdir Shellscripting
+git status
+open
+cd 
+help
+rename .git
+open_with
+find
+search d
+search docl
+open_with vim
+open_with 
+
