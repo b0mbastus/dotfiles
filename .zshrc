@@ -91,7 +91,7 @@ export LANG=en_US.UTF-8
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-alias switchkeys="(setxkbmap -query | grep -q "layout:\s\+us") && setxkbmap de || setxkbmap us"
+alias switchkeys="(setxkbmap -query | grep -q 'layout:\s\+us') && setxkbmap de || setxkbmap us"
 
 alias testchars="echo '\ue0b0 \u00b1 \ue0a0 \u27a6 \u2718 \u26a1 \u2699'"
 alias zshconfig="vim ~/.zshrc"
