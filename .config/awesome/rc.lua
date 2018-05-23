@@ -1,3 +1,7 @@
+--[[
+	Awesome WM configuration by Jan Hanke
+--]]
+
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -17,9 +21,11 @@ require("awful.hotkeys_popup.keys.vim")
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
-    naughty.notify({ preset = naughty.config.presets.critical,
-                     title = "Oops, there were errors during startup!",
-                     text = awesome.startup_errors })
+    naughty.notify({ 
+			preset = naughty.config.presets.critical,
+            title = "Oops, there were errors during startup!",
+            text = awesome.startup_errors
+	})
 end
 
 -- Handle runtime errors after startup
@@ -42,9 +48,10 @@ end
 -- Themes define colours, icons, font and wallpapers.
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 beautiful.init("/home/jan/.config/awesome/themes/first/theme.lua")
+-- beautiful.init("/home/jan/.config/awesome/themes/powerarrow-gruvbox/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
+terminal = "st"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -66,13 +73,13 @@ awful.layout.layouts = {
     awful.layout.suit.fair.horizontal,
     awful.layout.suit.spiral,
     awful.layout.suit.spiral.dwindle,
-    -- awful.layout.suit.max,
-    -- awful.layout.suit.max.fullscreen,
-    -- awful.layout.suit.magnifier,
-    -- awful.layout.suit.corner.nw,
-    -- awful.layout.suit.corner.ne,
-    -- awful.layout.suit.corner.sw,
-    -- awful.layout.suit.corner.se,
+    awful.layout.suit.max,
+    awful.layout.suit.max.fullscreen,
+    awful.layout.suit.magnifier,
+    awful.layout.suit.corner.nw,
+    awful.layout.suit.corner.ne,
+    awful.layout.suit.corner.sw,
+    awful.layout.suit.corner.se,
 }
 -- }}}
 
@@ -90,6 +97,9 @@ local function client_menu_toggle_fn()
     end
 end
 -- }}}
+
+-- Useless Gap
+beautiful.useless_gap = 2
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
@@ -183,7 +193,38 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "HOME", "WEB", "MISC", "SYS" }, s, awful.layout.layouts[2])
+    -- awful.tag({ "1", "2", "3", "4" }, s, awful.layout.layouts[2])
+
+	awful.tag.add("1", {
+		icon = "",
+		layout = awful.layout.layouts[2],
+		selected = true,
+		screen = s,
+	})
+
+	awful.tag.add("2", {
+		icon = "",
+		layout = awful.layout.layouts[2],
+		screen = s,
+	})
+
+	awful.tag.add("3", {
+		icon = "",
+		layout = awful.layout.layouts[2],
+		screen = s,
+	})
+	
+	awful.tag.add("4", {
+		icon = "",
+		layout = awful.layout.layouts[2],
+		screen = s,
+	})
+
+	awful.tag.add("5", {
+		icon = "",
+		layout = awful.layout.layouts[2],
+		screen = s,
+	})
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -202,7 +243,7 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = 20 })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -459,6 +500,7 @@ awful.rules.rules = {
         instance = {
           "DTA",  -- Firefox addon DownThemAll.
           "copyq",  -- Includes session name in class.
+		  "guake",
         },
         class = {
           "Arandr",
@@ -522,7 +564,7 @@ client.connect_signal("request::titlebars", function(c)
         end)
     )
 
-    awful.titlebar(c) : setup {
+    awful.titlebar(c, { size = 15 } ) : setup {
         { -- Left
             awful.titlebar.widget.iconwidget(c),
             buttons = buttons,
@@ -537,11 +579,11 @@ client.connect_signal("request::titlebars", function(c)
             layout  = wibox.layout.flex.horizontal
         },
         { -- Right
-            awful.titlebar.widget.floatingbutton (c),
-            awful.titlebar.widget.maximizedbutton(c),
-            awful.titlebar.widget.stickybutton   (c),
-            awful.titlebar.widget.ontopbutton    (c),
-            awful.titlebar.widget.closebutton    (c),
+            -- awful.titlebar.widget.floatingbutton (c),
+            -- awful.titlebar.widget.maximizedbutton(c),
+            -- awful.titlebar.widget.stickybutton   (c),
+            -- awful.titlebar.widget.ontopbutton    (c),
+            -- awful.titlebar.widget.closebutton    (c),
             layout = wibox.layout.fixed.horizontal()
         },
         layout = wibox.layout.align.horizontal
