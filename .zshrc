@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/jan/.oh-my-zsh
@@ -86,55 +86,14 @@ export LANG=en_US.UTF-8
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-function proxy_on() {
-    export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
-
-    if (( $# > 0 )); then
-        valid=$(echo $@ | sed -n 's/\([0-9]\{1,3\}.\)\{4\}:\([0-9]\+\)/&/p')
-        if [[ $valid != $@ ]]; then
-            >&2 echo "Invalid address"
-            return 1
-        fi
-
-        export http_proxy="http://$1/" \
-               https_proxy=$http_proxy \
-               ftp_proxy=$http_proxy \
-               rsync_proxy=$http_proxy
-        echo "Proxy environment variable set."
-        return 0
-    fi
-
-    echo -n "username: "; read username
-    if [[ $username != "" ]]; then
-        echo -n "password: "
-        read -es password
-        local pre="$username:$password@"
-    fi
-
-    echo -n "server: "; read server
-    echo -n "port: "; read port
-    export http_proxy="http://$pre$server:$port/" \
-           https_proxy=$http_proxy \
-           ftp_proxy=$http_proxy \
-           rsync_proxy=$http_proxy \
-           HTTP_PROXY=$http_proxy \
-           HTTPS_PROXY=$http_proxy \
-           FTP_PROXY=$http_proxy \ 
-           RSYNC_PROXY=$http_proxy
-}
-
-function proxy_off(){
-    unset http_proxy https_proxy ftp_proxy rsync_proxy \
-          HTTP_PROXY HTTPS_PROXY FTP_PROXY RSYNC_PROXY
-    echo -e "Proxy environment variable removed."
-}
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
+
+alias switchkeys="(setxkbmap -query | grep -q "layout:\s\+us") && setxkbmap de || setxkbmap us"
+
+alias testchars="echo '\ue0b0 \u00b1 \ue0a0 \u27a6 \u2718 \u26a1 \u2699'"
 alias zshconfig="vim ~/.zshrc"
 alias xmerge="xrdb -merge ~/.Xresources"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias ohmyzsh="vim ~/.oh-my-zsh"

@@ -24,10 +24,16 @@ open
 cd 
 help
 rename .git
-open_with
 find
 search d
 search docl
 open_with vim
+find fon
+find st
 open_with 
+shell q
+find pacman
+open_with
+find ra
 
+git pull

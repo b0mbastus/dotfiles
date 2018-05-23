@@ -4,12 +4,12 @@
 
 theme = {}
 
-theme.font          = "sans 10"
+theme.font          = "Source Code Pro for Powerline bold 10"
 
 alpha = "55"
 
-theme.bg_normal     = "#333333" .. alpha -- "#222222"
-theme.bg_focus      = "#ff9800"
+theme.bg_normal     = "#222222" -- "#333333" .. alpha -- "#222222"
+theme.bg_focus      = "#777777" -- "#ff9800"
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
