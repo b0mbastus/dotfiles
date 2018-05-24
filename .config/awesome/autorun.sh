@@ -9,3 +9,4 @@ function run {
 run compton
 run nm-applet
 run conky -p 1 -c ~/.config/conky/conky.conf
+run guake
