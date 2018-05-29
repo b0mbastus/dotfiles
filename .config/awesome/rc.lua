@@ -17,6 +17,9 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Enable VIM help for hotkeys widget when client with matching name is opened:
 require("awful.hotkeys_popup.keys.vim")
 
+-- Custom Widgets
+cpu_widget = require("widgets.cpu-widget")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -256,6 +259,7 @@ awful.screen.connect_for_each_screen(function(s)
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
+			cpu_widget,
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
