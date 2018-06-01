@@ -19,6 +19,10 @@ require("awful.hotkeys_popup.keys.vim")
 
 -- Custom Widgets
 cpu_widget = require("widgets.cpu-widget")
+ram_widget = require("widgets.ram-widget")
+volume_widget = require("widgets.volume-widget.volume")
+volume_arc_widget = require("widgets.volumearc")
+
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -259,6 +263,9 @@ awful.screen.connect_for_each_screen(function(s)
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
+			volume_widget,
+			volume_arc_widget,
+			ram_widget,
 			cpu_widget,
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
