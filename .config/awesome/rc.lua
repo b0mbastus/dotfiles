@@ -383,7 +383,11 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+	
+	-- Custom
+	awful.key({ "Mod1" }, "Shift_L", function() awful.spawn("sh /home/jan/.config/awesome/scripts/switch_layout.sh") end,
+			  {description = "switch keyboard layout", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
