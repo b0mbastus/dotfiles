@@ -64,20 +64,20 @@ su - $username -c "git config --global core.editor 'vim'"
 
 #Clone dotfile repo and checkout correct branch
 DOTFILES=/home/${username}/.dotfiles
-git clone https://github.com/JanHanke/config_files.git ${DOTFILES}
+su - $username -c "git clone https://github.com/JanHanke/config_files.git ${DOTFILES}"
 cd ${DOTFILES}
 git checkout -b virtual
 
 # Make directory for manually updated packages and install them
-mkdir /home/${username}/packages
+su - $username -c "mkdir /home/${username}/packages"
 cd /home/${username}/packages
 ## radare2 (Manual installation)
-git clone https://github.com/radare/radare2.git
+su - $username -c "git clone https://github.com/radare/radare2.git"
 ./radare2/sys/install.sh
 
 
 # Install oh-my-zsh and copy config files
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+su - $username -c "sh -c $(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 cp -pf ${DOTFILES}/.zshrc /home/${username}
 cp -pf ${DOTFILES}/.tmux.conf /home/${username}
 cp -pf ${DOTFILES}/.vimrc /home/${username}
