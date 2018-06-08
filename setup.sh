@@ -31,7 +31,7 @@ fi
 while true; do
 	read -p 'Do you want to add an ssh-key? ' yn
 	case $yn in
-		[Yy]* ) mkdir ~/.ssh
+		[Yy]* ) mkdir /home/$username/.ssh
 				### Ask for ssh-public-key
 				read -p 'Enter a filename for the key: ' filename
 				vi /home/$username/.ssh/$filename
