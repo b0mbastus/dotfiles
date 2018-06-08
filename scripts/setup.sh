@@ -53,9 +53,9 @@ git clone https://github.com/radare/radare2.git
 
 # Install oh-my-zsh and copy config files
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-cp -pf ${DOTFILES}/.zshrc /home/${username}
-cp -pf ${DOTFILES}/.tmux.conf /home/${username}
-cp -pf ${DOTFILES}/.vimrc /home/${username}
+cp -pf ${DOTFILES}/.zshrc $HOME
+cp -pf ${DOTFILES}/.tmux.conf $HOME
+cp -pf ${DOTFILES}/.vimrc $HOME
 
 # Setup and update vim
-vim -c 'PlugInstall'
+#vim -c 'PlugInstall'
