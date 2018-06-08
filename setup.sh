@@ -66,7 +66,7 @@ su - $username -c "git config --global core.editor 'vim'"
 DOTFILES=/home/${username}/.dotfiles
 su - $username -c "git clone https://github.com/JanHanke/config_files.git ${DOTFILES}"
 cd ${DOTFILES}
-git checkout -b virtual
+git checkout virtual
 
 # Make directory for manually updated packages and install them
 su - $username -c "mkdir /home/${username}/packages"
@@ -78,9 +78,9 @@ su - $username -c "git clone https://github.com/radare/radare2.git"
 
 # Install oh-my-zsh and copy config files
 su - $username -c "sh -c $(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-cp -pf ${DOTFILES}/.zshrc /home/${username}
-cp -pf ${DOTFILES}/.tmux.conf /home/${username}
-cp -pf ${DOTFILES}/.vimrc /home/${username}
+su - $username -c "cp -pf ${DOTFILES}/.zshrc /home/${username}"
+su - $username -c "cp -pf ${DOTFILES}/.tmux.conf /home/${username}"
+su - $username -c "cp -pf ${DOTFILES}/.vimrc /home/${username}"
 
 # Setup and update vim
 vim -c 'PlugInstall'
