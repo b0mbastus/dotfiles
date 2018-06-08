@@ -24,7 +24,7 @@ if [ $(id -u) -eq 0 ]; then
                 fi
         done
         # Change to user
-        su - $username
+        #su - $username
 fi
 
 # Ask if ssh key is wished for
@@ -34,9 +34,9 @@ while true; do
 		[Yy]* ) mkdir ~/.ssh
 				### Ask for ssh-public-key
 				read -p 'Enter a filename for the key: ' filename
-				vi ~/.ssh/$filename
+				vi /home/$username/.ssh/$filename
 				### Insert public key into athorized
-				~/.ssh/$filename > ~/.ssh/authorized_keys
+				/home/$username/.ssh/$filename > /home/$username/.ssh/authorized_keys
 				break;;
 		[Nn]* ) exit;;
 		* ) echo "Please answer yes or no.";;
@@ -51,18 +51,19 @@ sudo apt-get upgrade
 programs=(zsh zsh-syntax-highlighting bash-completion vim git htop tmux ranger powerline python g++ make gdb nmap curl)
 sudo apt-get install -y ${programs[*]}
 
-chsh -s /bin/zsh
+#chsh -s /bin/zsh
+usermod -s /bin/zsh $username
 
 # Setup git
 ## user.email and user.name
 read -p 'Enter your git e-mail: ' email
 read -p 'Enter your git name: ' name
-git config --global user.mail $email
-git config --global user.name $name
-git config --global core.editor "vim"
+su - $username -c "git config --global user.mail $email"
+su - $username -c "git config --global user.name $name"
+su - $username -c "git config --global core.editor 'vim'"
 
 #Clone dotfile repo and checkout correct branch
-DOTFILES='~/.dotfiles'
+DOTFILES='/home/$username/.dotfiles'
 git clone https://github.com/JanHanke/config_files.git $DOTFILES
 cd $DOTFILES
 git checkout -b virtual
@@ -83,3 +84,5 @@ cp -pf $DOTFILES/.vimrc ~
 
 # Setup and update vim
 vim -c 'PlugInstall'
+
+su - $username
