@@ -31,12 +31,12 @@ fi
 while true; do
 	read -p 'Do you want to add an ssh-key? ' yn
 	case $yn in
-		[Yy]* ) mkdir /home/$username/.ssh
+		[Yy]* ) mkdir /home/${username}/.ssh
 				### Ask for ssh-public-key
 				read -p 'Enter a filename for the key: ' filename
-				vi /home/$username/.ssh/$filename
+				vi /home/${username}/.ssh/${filename}
 				### Insert public key into athorized
-				/home/$username/.ssh/$filename > /home/$username/.ssh/authorized_keys
+				/home/${username}/.ssh/${filename} > /home/${username}/.ssh/authorized_keys
 				break;;
 		[Nn]* ) break;;
 		* ) echo "Please answer yes or no.";;
@@ -58,19 +58,19 @@ usermod -s /bin/zsh $username
 ## user.email and user.name
 read -p 'Enter your git e-mail: ' email
 read -p 'Enter your git name: ' name
-su - $username -c "git config --global user.mail $email"
+su - $username -c "git config --global user.email $email"
 su - $username -c "git config --global user.name $name"
 su - $username -c "git config --global core.editor 'vim'"
 
 #Clone dotfile repo and checkout correct branch
-DOTFILES='/home/$username/.dotfiles'
-git clone https://github.com/JanHanke/config_files.git $DOTFILES
-cd $DOTFILES
+DOTFILES=/home/${username}/.dotfiles
+git clone https://github.com/JanHanke/config_files.git ${DOTFILES}
+cd ${DOTFILES}
 git checkout -b virtual
 
 # Make directory for manually updated packages and install them
-mkdir /home/$username/packages
-cd /home/$username/packages
+mkdir /home/${username}/packages
+cd /home/${username}/packages
 ## radare2 (Manual installation)
 git clone https://github.com/radare/radare2.git
 ./radare2/sys/install.sh
@@ -78,9 +78,9 @@ git clone https://github.com/radare/radare2.git
 
 # Install oh-my-zsh and copy config files
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-cp -pf $DOTFILES/.zshrc /home/$username
-cp -pf $DOTFILES/.tmux.conf /home/$username
-cp -pf $DOTFILES/.vimrc /home/$username
+cp -pf ${DOTFILES}/.zshrc /home/${username}
+cp -pf ${DOTFILES}/.tmux.conf /home/${username}
+cp -pf ${DOTFILES}/.vimrc /home/${username}
 
 # Setup and update vim
 vim -c 'PlugInstall'
