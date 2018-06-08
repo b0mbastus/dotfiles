@@ -14,8 +14,8 @@ mmcblk0     179:0    0   7.6G  0 disk
 
 To setup vm run:
 
-```sh -c "$(curl -fsSL  https://raw.githubusercontent.com/JanHanke/config_files/virtual/setup.sh)"```
+bash -c "$(curl -fsSL  https://raw.githubusercontent.com/JanHanke/config_files/virtual/setup.sh)"
 
 or
 
-```sh -c "$(wget https://raw.githubusercontent.com/JanHanke/config_files/virtual/setup.sh -O -)"```
+bash -c "$(wget https://raw.githubusercontent.com/JanHanke/config_files/virtual/setup.sh -O -)"
