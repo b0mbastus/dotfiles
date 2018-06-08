@@ -38,7 +38,7 @@ while true; do
 				### Insert public key into athorized
 				/home/$username/.ssh/$filename > /home/$username/.ssh/authorized_keys
 				break;;
-		[Nn]* ) exit;;
+		[Nn]* ) break;;
 		* ) echo "Please answer yes or no.";;
 	esac
 done
@@ -69,8 +69,8 @@ cd $DOTFILES
 git checkout -b virtual
 
 # Make directory for manually updated packages and install them
-mkdir ~/packages
-cd ~/packages
+mkdir /home/$username/packages
+cd /home/$username/packages
 ## radare2 (Manual installation)
 git clone https://github.com/radare/radare2.git
 ./radare2/sys/install.sh
@@ -78,9 +78,9 @@ git clone https://github.com/radare/radare2.git
 
 # Install oh-my-zsh and copy config files
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-cp -pf $DOTFILES/.zshrc ~
-cp -pf $DOTFILES/.tmux.conf ~
-cp -pf $DOTFILES/.vimrc ~
+cp -pf $DOTFILES/.zshrc /home/$username
+cp -pf $DOTFILES/.tmux.conf /home/$username
+cp -pf $DOTFILES/.vimrc /home/$username
 
 # Setup and update vim
 vim -c 'PlugInstall'
