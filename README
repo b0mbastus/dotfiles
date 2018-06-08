@@ -1,21 +1,9 @@
-NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-sda           8:0    0 931.5G  0 disk 
-|-sda1        8:1    0   450M  0 part 
-|-sda2        8:2    0   100M  0 part /boot/efi
-|-sda3        8:3    0    16M  0 part 
-|-sda4        8:4    0 292.4G  0 part 
-`-sda5        8:5    0 638.6G  0 part /mnt/share
-sdb           8:16   0 232.9G  0 disk 
-|-sdb1        8:17   0    16G  0 part [SWAP]
-`-sdb2        8:18   0 216.9G  0 part /
-mmcblk0     179:0    0   7.6G  0 disk 
-`-mmcblk0p1 179:1    0   7.6G  0 part 
-
-
 To setup vm run:
 
-bash -c "$(curl -fsSL  https://raw.githubusercontent.com/JanHanke/config_files/virtual/setup.sh)"
+1. Execute as root:
 
-or
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/JanHanke/config_files/virtual/scripts/create-user.sh)"
 
-bash -c "$(wget https://raw.githubusercontent.com/JanHanke/config_files/virtual/setup.sh -O -)"
+2. Execute as user:
+
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/JanHanke/config_files/virtual/scripts/setup.sh)"
