@@ -10,3 +10,12 @@ sdb           8:16   0 232.9G  0 disk
 `-sdb2        8:18   0 216.9G  0 part /
 mmcblk0     179:0    0   7.6G  0 disk 
 `-mmcblk0p1 179:1    0   7.6G  0 part 
+
+
+To setup vm run:
+
+```sh -c "$(curl -fsSL  https://raw.githubusercontent.com/JanHanke/config_files/virtual/setup.sh)"```
+
+or
+
+```sh -c "$(wget https://raw.githubusercontent.com/JanHanke/config_files/virtual/setup.sh -O -)"```
