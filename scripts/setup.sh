@@ -10,7 +10,7 @@ while true; do
 		[Yy]* ) mkdir ${HOME}/.ssh
 			read -p 'Enter a filename for the key: ' filename
 			vi ${HOME}/.ssh/${filename}
-			${HOME}/.ssh/${filename} > ${HOME}/.ssh/authorized_keys
+			cat ${HOME}/.ssh/${filename} >> ${HOME}/.ssh/authorized_keys
 			break;;
 		[Nn]* ) break;;
 		* ) echo "Please answer yes or no.";;
