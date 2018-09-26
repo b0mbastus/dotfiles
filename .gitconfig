@@ -1,3 +1,5 @@
 [user]
 	email = jan-manuelhanke@gmx.de
 	name = Jan Hanke
+[core]
+	editor = vim

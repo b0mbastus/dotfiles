@@ -97,3 +97,5 @@ alias testchars="echo '\ue0b0 \u00b1 \ue0a0 \u27a6 \u2718 \u26a1 \u2699'"
 alias zshconfig="vim ~/.zshrc"
 alias xmerge="xrdb -merge ~/.Xresources"
 alias ohmyzsh="vim ~/.oh-my-zsh"
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
