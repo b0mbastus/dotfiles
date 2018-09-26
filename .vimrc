@@ -1,3 +1,10 @@
+" Automatic vim plug installation
+if empty(glob('~/.vim/autoload/plug.vim'))
+		silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+			  \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " Plugins will be downloaded under specified directory.
 call plug#begin('~/.vim/plugged')
 
@@ -40,11 +47,12 @@ set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.i
 " Powerline settings "
 """"""""""""""""""""""
 
-set rtp+=/usr/lib/python3.5/site-packages/powerline/bindings/vim/
+set rtp+=/usr/lib/python3.7/site-packages/powerline/bindings/vim/
 set laststatus=2
 set showtabline=1
 set noshowmode
 set t_Co=256
+let g:powerline_pycmd="py3"
 
 """""""""""
 " General "
