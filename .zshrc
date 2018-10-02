@@ -98,4 +98,6 @@ alias zshconfig="vim ~/.zshrc"
 alias xmerge="xrdb -merge ~/.Xresources"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 
+alias activate="source ./bin/activate"
+
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
