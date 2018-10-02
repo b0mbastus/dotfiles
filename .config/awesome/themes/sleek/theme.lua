@@ -14,11 +14,11 @@ theme                                           = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/sleek"
 theme.wallpaper                                 = theme.dir .. "/wallpapers/arch-solarized.png"
 
-theme.font                                      = "SNFS Display UltraLight 8"
+theme.font                                      = "SNFS Display Bold 8" --"Ubuntu Mono derivative Powerline 10" --"SNFS Display UltraLight 8"
 theme.fg_normal                                 = "#ffffff"
 theme.fg_focus                                  = "#ffffff"
 theme.bg_normal                                 = "#202020A0"
-theme.bg_focus                                  = "#20202000"
+theme.bg_focus                                  = "#202020A0"
 theme.fg_urgent                                 = "#FF0000"
 theme.bg_urgent                                 = "#12121200"
 theme.border_width                              = 0
@@ -27,12 +27,12 @@ theme.border_focus                              = "#848484"
 
 theme.tasklist_fg_focus                         = "#ffffff"
 theme.tasklist_fg_normal                        = "#848484"
-theme.tasklist_bg_focus                         = "#20202000"
+theme.tasklist_bg_focus                         = "#b3b3b300"
 theme.tasklist_bg_normal                        = "#20202000"
 
 theme.titlebar_bg_normal                        = "#202020"
 theme.titlebar_bg_focus                         = "#202020"
-theme.menu_height                               = "10"
+theme.menu_height                               = "12"
 theme.menu_width                                = "150"
 theme.bg_systray                                = "#202020"
 
@@ -48,8 +48,8 @@ theme.tasklist_disable_icon                     = true
 
 theme.awesome_icon                              = theme.dir .."/icons/awesome.png"
 theme.submenu_icon                              = theme.dir .."/icons/submenu.png"
-theme.taglist_squares_sel                       = theme.dir .. "/icons/square_unsel.png"
-theme.taglist_squares_unsel                     = theme.dir .. "/icons/square_unsel.png"
+theme.taglist_squares_sel                       = theme.dir .. "/icons/taglist/squarefw.png"
+theme.taglist_squares_unsel                     = theme.dir .. "/icons/taglist/squarew.png"
 theme.widget_bg                                 = theme.dir .. "/icons/widget_bg.png"
 theme.vol                                       = theme.dir .. "/icons/vol.png"
 theme.vol_low                                   = theme.dir .. "/icons/vol_low.png"
