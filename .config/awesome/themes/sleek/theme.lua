@@ -14,16 +14,16 @@ theme                                           = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/sleek"
 theme.wallpaper                                 = theme.dir .. "/wallpapers/arch-solarized.png"
 
-theme.font                                      = "SNFS Display Bold 8" --"Ubuntu Mono derivative Powerline 10" --"SNFS Display UltraLight 8"
+theme.font                                      = "SNFS Display Bold 8"
 theme.fg_normal                                 = "#ffffff"
 theme.fg_focus                                  = "#ffffff"
-theme.bg_normal                                 = "#202020A0"
-theme.bg_focus                                  = "#202020A0"
+theme.bg_normal                                 = "#202020"--"#202020A0"
+theme.bg_focus                                  = "#202020"--"#202020A0"
 theme.fg_urgent                                 = "#FF0000"
 theme.bg_urgent                                 = "#12121200"
-theme.border_width                              = 0
-theme.border_normal                             = "#121212"
-theme.border_focus                              = "#848484"
+theme.border_width                              = 1
+theme.border_normal                             = "#343434"--"#848484"
+theme.border_focus                              = "#121212"
 
 theme.tasklist_fg_focus                         = "#ffffff"
 theme.tasklist_fg_normal                        = "#848484"
