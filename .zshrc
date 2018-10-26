@@ -100,6 +100,8 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 
 alias activate="source ./bin/activate"
 
+alias lock="~/Scripts/lock.sh"
+
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
