@@ -17,6 +17,7 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 local lain          = require("lain")
 
 -- Custom Widgets
+taskrunner          = require("widgets.taskrunner")
 cpu_widget          = require("widgets.cpu-widget")
 ram_widget          = require("widgets.ram-widget")
 volume_widget       = require("widgets.volume-widget.volume")
@@ -275,6 +276,8 @@ awful.screen.connect_for_each_screen(function(s)
             s.mylayoutbox,
         },
     }
+
+    s.taskrunner = taskrunner
 end)
 -- }}}
 
@@ -298,7 +301,7 @@ globalkeys = gears.table.join(
               {description = "go back", group = "tag"}),
 
     awful.key({ modkey,           }, "j",
-        function ()
+        function ()            
             awful.client.focus.byidx( 1)
         end,
         {description = "focus next by index", group = "client"}
@@ -382,6 +385,9 @@ globalkeys = gears.table.join(
                   }
               end,
               {description = "lua execute prompt", group = "awesome"}),
+
+    awful.key({ modkey, "Mod1" }, "t", function() taskrunner.launch() end, { description = "Custom taskrunner", group = "launcher" }),
+
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
