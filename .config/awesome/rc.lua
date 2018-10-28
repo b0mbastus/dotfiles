@@ -1,21 +1,28 @@
 --[[
-	Awesome WM configuration by Jan Hanke
+    Awesome WM configuration by Jan Hanke
+    
+    based on a lot of other Awesome WM configs
 --]]
 
--- Standard awesome library
-local gears = require("gears")
-local awful = require("awful")
-require("awful.autofocus")
--- Widget and layout library
-local wibox = require("wibox")
--- Theme handling library
-local beautiful = require("beautiful")
--- Notification library
-local naughty = require("naughty")
-local menubar = require("menubar")
+-- Required libraries
+local gears         = require("gears")
+local awful         = require("awful")
+                      require("awful.autofocus")
+local wibox         = require("wibox")
+local beautiful     = require("beautiful")
+local naughty       = require("naughty")
+local menubar       = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
--- Enable VIM help for hotkeys widget when client with matching name is opened:
-require("awful.hotkeys_popup.keys.vim")
+                      require("awful.hotkeys_popup.keys.vim")
+local lain          = require("lain")
+
+-- Custom Widgets
+taskrunner          = require("widgets.taskrunner")
+cpu_widget          = require("widgets.cpu-widget")
+ram_widget          = require("widgets.ram-widget")
+volume_widget       = require("widgets.volume-widget.volume")
+volume_arc_widget   = require("widgets.volumearc")
+
 
 -- Custom Widgets
 cpu_widget = require("widgets.cpu-widget")
@@ -54,11 +61,11 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-beautiful.init("/home/jan/.config/awesome/themes/first/theme.lua")
--- beautiful.init("/home/jan/.config/awesome/themes/powerarrow-gruvbox/theme.lua")
+-- beautiful.init("/home/jan/.config/awesome/themes/first/theme.lua")
+beautiful.init("/home/jan/.config/awesome/themes/sleek/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "st"
+terminal = "urxvt"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -89,6 +96,8 @@ awful.layout.layouts = {
     awful.layout.suit.corner.se,
 }
 -- }}}
+
+default_layout = awful.layout.layouts[2]
 
 -- {{{ Helper functions
 local function client_menu_toggle_fn()
@@ -204,32 +213,32 @@ awful.screen.connect_for_each_screen(function(s)
 
 	awful.tag.add("1", {
 		icon = "",
-		layout = awful.layout.layouts[2],
+		layout = default_layout,
 		selected = true,
 		screen = s,
 	})
 
 	awful.tag.add("2", {
 		icon = "",
-		layout = awful.layout.layouts[2],
+		layout = default_layout,
 		screen = s,
 	})
 
 	awful.tag.add("3", {
 		icon = "",
-		layout = awful.layout.layouts[2],
+		layout = default_layout,
 		screen = s,
 	})
 	
 	awful.tag.add("4", {
 		icon = "",
-		layout = awful.layout.layouts[2],
+		layout = default_layout,
 		screen = s,
 	})
 
 	awful.tag.add("5", {
 		icon = "",
-		layout = awful.layout.layouts[2],
+		layout = default_layout,
 		screen = s,
 	})
 
@@ -274,6 +283,8 @@ awful.screen.connect_for_each_screen(function(s)
             s.mylayoutbox,
         },
     }
+
+    s.taskrunner = taskrunner
 end)
 -- }}}
 
@@ -297,7 +308,7 @@ globalkeys = gears.table.join(
               {description = "go back", group = "tag"}),
 
     awful.key({ modkey,           }, "j",
-        function ()
+        function ()            
             awful.client.focus.byidx( 1)
         end,
         {description = "focus next by index", group = "client"}
@@ -381,6 +392,9 @@ globalkeys = gears.table.join(
                   }
               end,
               {description = "lua execute prompt", group = "awesome"}),
+
+    awful.key({ modkey, "Mod1" }, "t", function() taskrunner.launch() end, { description = "Custom taskrunner", group = "launcher" }),
+
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
@@ -497,17 +511,20 @@ root.keys(globalkeys)
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
     -- All clients will match this rule.
-    { rule = { },
-      properties = { border_width = beautiful.border_width,
-                     border_color = beautiful.border_normal,
-                     focus = awful.client.focus.filter,
-                     raise = true,
-                     keys = clientkeys,
-                     buttons = clientbuttons,
-                     screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen,
-		     size_hints_honor = false
-     }
+    {
+        rule = { },
+        properties = { 
+            border_width = beautiful.border_width,
+            border_color = beautiful.border_normal,
+            focus = awful.client.focus.filter,
+            raise = true,
+            keys = clientkeys,
+            buttons = clientbuttons,
+            screen = awful.screen.preferred,
+            placement = awful.placement.no_overlap + awful.placement.no_offscreen,
+            titlebars_enabled = true,
+            size_hints_honor = false
+        }
     },
 
     -- Floating clients.
@@ -539,7 +556,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = false }
+      }, properties = { titlebars_enabled = true }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
@@ -581,9 +598,12 @@ client.connect_signal("request::titlebars", function(c)
 
     awful.titlebar(c, { size = 15 } ) : setup {
         { -- Left
-            awful.titlebar.widget.iconwidget(c),
-            buttons = buttons,
-            layout  = wibox.layout.fixed.horizontal
+            -- awful.titlebar.widget.iconwidget(c),
+            --buttons = buttons,
+            awful.titlebar.widget.closebutton(c),
+            awful.titlebar.widget.minimizebutton(c),
+            awful.titlebar.widget.maximizedbutton(c),
+            layout = wibox.layout.fixed.horizontal,
         },
         { -- Middle
             { -- Title
@@ -595,23 +615,32 @@ client.connect_signal("request::titlebars", function(c)
         },
         { -- Right
             -- awful.titlebar.widget.floatingbutton (c),
+            -- awful.titlebar.widget.closebutton(c),
+            -- awful.titlebar.widget.minimizebutton(c),
             -- awful.titlebar.widget.maximizedbutton(c),
             -- awful.titlebar.widget.stickybutton   (c),
             -- awful.titlebar.widget.ontopbutton    (c),
-            -- awful.titlebar.widget.closebutton    (c),
             layout = wibox.layout.fixed.horizontal()
         },
         layout = wibox.layout.align.horizontal
     }
 end)
 
--- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c)
-    if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
-        and awful.client.focus.filter(c) then
-        client.focus = c
+client.connect_signal("manage", function(c, startup) 
+    -- Enable round corners
+    c.shape = function(cr, w, h)
+        gears.shape.rounded_rect(cr, w, h, 5)
     end
+
+    -- Enable sloppy focus, so that focus follows mouse.
+    client.connect_signal("mouse::enter", function(c)
+        if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
+            and awful.client.focus.filter(c) then
+            client.focus = c
+        end
+    end)
 end)
+
 
 awful.spawn.with_shell("~/.config/awesome/autorun.sh")
 
