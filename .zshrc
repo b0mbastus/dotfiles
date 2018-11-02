@@ -105,3 +105,11 @@ alias lock="~/Scripts/lock.sh"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
+
+# Alter brightness
+# Set max brightness
+alias brightness_max="sudo tee /sys/class/backlight/intel_backlight/brightness <<< `cat /sys/class/backlight/intel_backlight/max_brightness`"
+# Set medium brightness
+alias brightness_medium="sudo tee /sys/class/backlight/intel_backlight/brightness <<< 2000"
+# Set low brightness
+alias brightness_low="sudo tee /sys/class/backlight/intel_backlight/brightness <<< 1000"
