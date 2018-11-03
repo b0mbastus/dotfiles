@@ -106,6 +106,10 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 
+if [ -f ${HOME}/scripts/system.sh ]; then
+		source ${HOME}/scripts/system.sh
+fi
+
 # Alter brightness
 # Set max brightness
 alias brightness_max="sudo tee /sys/class/backlight/intel_backlight/brightness <<< `cat /sys/class/backlight/intel_backlight/max_brightness`"
