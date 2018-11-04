@@ -61,8 +61,7 @@ beautiful.init("/home/jan/.config/awesome/themes/sleek/theme.lua")
 terminal = "st"
 
 -- Experimental
-awful.spawn("sh /home/jan/system.sh")
-if os.getenv("SYSTEM") == "Laptop" then
+if os.execute("command -v urxvt") ~= "" then
     terminal = "urxvt"
 end
 
