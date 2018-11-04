@@ -5,8 +5,8 @@
 # Colors
 B='#00000000'  # blank
 C='#ffffff22'  # clear ish
-D='#ff00ffcc'  # default
-T='#ee00eeee'  # text
+D='#00ff00cc'  # default
+T='#00ff00ee'  # text
 W='#880000bb'  # wrong
 V='#bb00bbbb' # verifying
 
@@ -43,5 +43,10 @@ i3lock -i "$lockbg" --insidevercolor=$C   \
 --datestr="%A, %m %Y" \
 --keylayout 2 \
 --wrongtext="Nope!" \
+--radius=260 \
+--ring-width=30 \
+--timesize=80 \
+--datesize=30 \
+--layoutsize=20 \
 
 trap "rm $lockfi;" EXIT
