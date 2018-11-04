@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Requires: maim, imagemagick, i3lock
+# Requires: maim, imagemagick, i3lock-color
 
 # Colors
 B='#00000000'  # blank

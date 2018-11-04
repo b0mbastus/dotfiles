@@ -59,8 +59,17 @@ beautiful.init("/home/jan/.config/awesome/themes/sleek/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "st"
+
+-- Experimental
+awful.spawn("sh /home/jan/system.sh")
+if os.getenv("SYSTEM") == "Laptop" then
+    terminal = "urxvt"
+end
+
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
+
+scripts = os.getenv("HOME") .. "/scripts"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -393,7 +402,7 @@ globalkeys = gears.table.join(
               {description = "show the menubar", group = "launcher"}),
 	
 	-- Custom
-	awful.key({ "Mod1" }, "Shift_L", function() awful.spawn("sh /home/jan/.config/awesome/scripts/switch_layout.sh") end,
+	awful.key({ "Mod1" }, "Shift_L", function() awful.spawn("sh /home/jan/scripts/switch_layout.sh") end,
 			  {description = "switch keyboard layout", group = "launcher"})
 )
 
@@ -635,7 +644,7 @@ client.connect_signal("manage", function(c, startup)
 end)
 
 
-awful.spawn.with_shell("~/.config/awesome/autorun.sh")
+awful.spawn.with_shell("~/scripts/autorun.sh")
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)

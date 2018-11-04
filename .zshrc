@@ -100,20 +100,22 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 
 alias activate="source ./bin/activate"
 
-alias lock="~/Scripts/lock.sh"
+alias lock="~/scripts/lock.sh"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 
-if [ -f ${HOME}/scripts/system.sh ]; then
-		source ${HOME}/scripts/system.sh
+if [ -f ${HOME}/system.sh ]; then
+	source ${HOME}/system.sh
 fi
 
-# Alter brightness
-# Set max brightness
-alias brightness_max="sudo tee /sys/class/backlight/intel_backlight/brightness <<< `cat /sys/class/backlight/intel_backlight/max_brightness`"
-# Set medium brightness
-alias brightness_medium="sudo tee /sys/class/backlight/intel_backlight/brightness <<< 2000"
-# Set low brightness
-alias brightness_low="sudo tee /sys/class/backlight/intel_backlight/brightness <<< 1000"
+if [[ "$SYSTEM" == "Laptop" ]]; then
+	# Alter brightness
+	# Set max brightness
+	alias brightness_max="sudo tee /sys/class/backlight/intel_backlight/brightness <<< `cat /sys/class/backlight/intel_backlight/max_brightness`"
+	# Set medium brightness
+	alias brightness_medium="sudo tee /sys/class/backlight/intel_backlight/brightness <<< 2000"
+	# Set low brightness
+	alias brightness_low="sudo tee /sys/class/backlight/intel_backlight/brightness <<< 1000"
+fi

@@ -1,3 +1,72 @@
+# My dotfiles
+
+# Required Software
+
+# AUR Packagemanager
+* yay
+* reflector [aur]
+
+* visual-studio-code-bin [aur]
+* sublime-text-dev [aur]
+* firefox-developer-edition [aur]
+* chromium
+* discord [aur]
+* mupdf
+
+# Shell
+* st or urxvt
+* zsh
+* zsh-syntax-highlighting
+* fzf
+* tmux
+* htop
+* atop
+
+* openvpn
+
+* powerline
+* powerline-vim ?
+* powerline-patched-fonts ?
+* powerline-fonts-git ?
+
+* conky ?
+* cmake ?
+
+* bc
+
+## Awesome WM
+* awesome
+* lain-git [aur]
+
+## Hacking
+* radare2
+* strace
+* lrace
+* wireshark-qt
+* nmap
+* metasploit
+* binwalk
+* masscan
+
+* gnu-netcat [aur]
+
+## Filemanager
+* ranger
+* nemo
+
+## locking
+* maim
+* i3lock-color [aur]
+* imagemagick
+
+## Image Processing
+* gimp
+* inkscape
+
+## Installed with pip
+* ipython
+* numpy
+
 NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
 sda           8:0    0 931.5G  0 disk 
 |-sda1        8:1    0   450M  0 part 
