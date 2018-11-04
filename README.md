@@ -70,6 +70,7 @@ I am currently trying out a system of organizing my dotfiles which allows me to 
 * ipython
 * numpy
 
+```
 NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
 sda           8:0    0 931.5G  0 disk 
 |-sda1        8:1    0   450M  0 part 
@@ -81,4 +82,5 @@ sdb           8:16   0 232.9G  0 disk
 |-sdb1        8:17   0    16G  0 part [SWAP]
 `-sdb2        8:18   0 216.9G  0 part /
 mmcblk0     179:0    0   7.6G  0 disk 
-`-mmcblk0p1 179:1    0   7.6G  0 part 
+`-mmcblk0p1 179:1    0   7.6G  0 part
+```

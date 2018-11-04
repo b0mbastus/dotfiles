@@ -16,8 +16,7 @@ lockbg='/tmp/lock.png'
 maim "$lockbg"
 convert "$lockbg" -filter point -resize 10% -resize 1000% "$lockbg"
 touch "$lockfi"
-i3lock -u -i "$lockbg" \
---insidevercolor=$C   \
+i3lock -i "$lockbg" --insidevercolor=$C   \
 --ringvercolor=$V     \
 \
 --insidewrongcolor=$C \
