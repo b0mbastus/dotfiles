@@ -23,6 +23,8 @@ while [[ ! -f ${HOME}/system.sh ]]; do
     fi
 done
 
+source ${HOME}/system.sh
+
 # scripts directory
 if [[ -d ${HOME}/scripts && ! -L ${HOME}/scripts ]]; then
     mv ${HOME}/scripts ${HOME}/scripts.old.`timestamp`
@@ -78,12 +80,20 @@ if [[ ! -e ${HOME}/.vimrc ]]; then
 fi
 
 # .Xresources
+if [[ $SYSTEM == "Laptop" ]]; then
+    XRESOURCES=${DOTFILES_DIR}/.Xresources_laptop
+else
+    XRESOURCES=${DOTFILES_DIR}/.Xresources
+fi
+
 if [[ -f ${HOME}/.Xresources && ! -L ${HOME}/.Xresources ]]; then
     mv ${HOME}/.Xresources ${HOME}/.Xresources.old.`timestamp`
-    ln -s ${DOTFILES_DIR}/.Xresources $HOME
+    ln -s $XRESOURCES $HOME/.Xresources
 fi
 if [[ ! -e ${HOME}/.Xresources ]]; then
-    ln -s ${DOTFILES_DIR}/.Xresources $HOME
+    ln -s $XRESOURCES $HOME/.Xresources
+else
+    ln -sf $XRESOURCES $HOME/.Xresources
 fi
 
 # .gitconfig
