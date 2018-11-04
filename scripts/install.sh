@@ -11,27 +11,32 @@ DOTFILES_DIR=${DIR}/..
 # 2: Laptop
 #
 
-if [ ! -f ${HOME}/scripts/system.sh ]; then
+if [[ ! -d ${HOME}/scripts ]]; then
+    mkdir ${HOME}/scripts
+fi
+
+while [[ ! -f ${HOME}/scripts/system.sh ]]; do
     echo "Select the type of system you are deploying to:"
     echo "1: Desktop"
     echo "2: Laptop"
     read input
 
-    if [ "input" -eq "1"]; then
-        ${HOME}/scripts/system.sh < "export SYSTEM "Desktop""
-    else if [ "input" -eq "2" ]; then
-        ${HOME}/scripts/system.sh < "export SYSTEM "Laptop""
+    if [[ "$input" -eq "1" ]]; then
+        echo "export SYSTEM 'Desktop'" > ${HOME}/scripts/system.sh
+    elif [[ "$input" -eq "2" ]]; then
+        echo "export SYSTEM 'Laptop'" > ${HOME}/scripts/system.sh
     else
         echo "Please make a valid selection."
     fi
-    chmod u+x ${HOME}/scripts/system.sh
-fi
+done
+
+chmod u+x ${HOME}/scripts/system.sh
 
 # .zshrc
-ln -s ${DOTFILES_DIR}/.zshrc $HOME
+#ln -s ${DOTFILES_DIR}/.zshrc $HOME
 
 # .tmux.conf
-ln -s ${DOTFILES_DIR}/.tmux.conf $HOME
+#ln -s ${DOTFILES_DIR}/.tmux.conf $HOME
 
 # .gitconfig
 
