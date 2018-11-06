@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source ${HOME}/system.sh
+
 function run {
 	if ! pgrep $1;
 	then
@@ -9,3 +11,7 @@ function run {
 run compton
 run nm-applet
 run conky -p 1 -c ~/.config/conky/conky.conf
+
+if [[ $SYSTEM == "Laptop" ]]; then
+	run cbatticon
+fi
