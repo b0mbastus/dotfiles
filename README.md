@@ -35,6 +35,9 @@ I am currently trying out a system of organizing my dotfiles which allows me to 
 * conky ?
 * cmake ?
 
+* nodejs
+* npm
+
 * bc
 
 ## Awesome WM
