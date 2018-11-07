@@ -61,7 +61,7 @@ beautiful.init("/home/jan/.config/awesome/themes/sleek/theme.lua")
 terminal = "st"
 
 -- Experimental
-if os.execute("command -v urxvt") ~= "" then
+if os.execute("command -v urxvt") ~= nil then
     terminal = "urxvt"
 end
 
