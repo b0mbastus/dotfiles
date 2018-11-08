@@ -17,24 +17,27 @@ theme.wallpaper                                 = theme.dir .. "/wallpapers/arch
 theme.font                                      = "SNFS Display Bold 8"
 theme.fg_normal                                 = "#ffffff"
 theme.fg_focus                                  = "#ffffff"
-theme.bg_normal                                 = "#202020"--"#202020A0"
-theme.bg_focus                                  = "#202020"--"#202020A0"
+theme.bg_normal                                 = "#202020"
+theme.bg_focus                                  = "#202020"
 theme.fg_urgent                                 = "#FF0000"
 theme.bg_urgent                                 = "#12121200"
+
 theme.border_width                              = 1
-theme.border_normal                             = "#343434"--"#848484"
+theme.border_normal                             = "#343434"
 theme.border_focus                              = "#121212"
 
 theme.tasklist_fg_focus                         = "#ffffff"
-theme.tasklist_fg_normal                        = "#848484"
-theme.tasklist_bg_focus                         = "#b3b3b300"
-theme.tasklist_bg_normal                        = "#20202000"
+theme.tasklist_fg_normal                        = "#ffffff" --"#848484"
+theme.tasklist_bg_focus                         = "#333333"
+theme.tasklist_bg_normal                        = "#202020"
 
 theme.titlebar_bg_normal                        = "#202020"
 theme.titlebar_bg_focus                         = "#202020"
 theme.menu_height                               = "12"
 theme.menu_width                                = "150"
 theme.bg_systray                                = "#202020"
+
+theme.taglist_bg_focus                          = "#333333"
 
 theme.menu_height = 20
 theme.menu_width  = 200
