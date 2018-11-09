@@ -70,6 +70,8 @@ editor_cmd = terminal .. " -e " .. editor
 
 scripts = os.getenv("HOME") .. "/scripts"
 
+titlebar_height = 18
+
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
 -- If you do not like this or do not have such a key,
@@ -597,7 +599,7 @@ client.connect_signal("request::titlebars", function(c)
         end)
     )
 
-    awful.titlebar(c, { size = 20 } ) : setup {
+    awful.titlebar(c, { size = titlebar_height } ) : setup {
         { -- Left
             -- awful.titlebar.widget.iconwidget(c),
             --buttons = buttons,

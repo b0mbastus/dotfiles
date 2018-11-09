@@ -62,7 +62,7 @@ plugins=(
   git
   archlinux
   python
-  vi-mode
+#  vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh

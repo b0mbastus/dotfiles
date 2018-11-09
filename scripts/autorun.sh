@@ -9,9 +9,9 @@ function run {
 	fi
 }
 run compton
-run nm-applet
 run conky -p 1 -c ~/.config/conky/conky.conf
 
 if [[ $SYSTEM == "Laptop" ]]; then
-	run cbatticon
+		run nm-applet
+		run cbatticon
 fi
