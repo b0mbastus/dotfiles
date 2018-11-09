@@ -27,7 +27,7 @@ theme.border_normal                             = "#343434"
 theme.border_focus                              = "#121212"
 
 theme.tasklist_fg_focus                         = "#ffffff"
-theme.tasklist_fg_normal                        = "#ffffff" --"#848484"
+theme.tasklist_fg_normal                        = "#848484"
 theme.tasklist_bg_focus                         = "#333333"
 theme.tasklist_bg_normal                        = "#202020"
 
