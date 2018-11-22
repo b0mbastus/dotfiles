@@ -209,9 +209,16 @@ urxvt*depth:                            32
 !urxvt*boldItalicFont: xft:Droid Sans Mono for Powerline:bold:italic:pixelsize=16:antialias=true
 
 !!Source Code Pro
-urxvt*font: xft:Source Code Pro for Powerline:pixelsize=16:antialias=true:hinting=true
-urxvt*boldFont: xft:Source Code Pro for Powerline:bold:pixelsize=16:antialias=true:hinting=true
-urxvt*italicFont: xft:Source Code Pro for Powerline:italic:pixelsize=16:antialias=true:hinting=true
-urxvt*boldItalicFont: xft:Source Code Pro for Powerline:bold:italic:pixelsize=16:antialias=true
+!urxvt*font: xft:Source Code Pro for Powerline:pixelsize=16:antialias=true:hinting=true
+!urxvt*boldFont: xft:Source Code Pro for Powerline:bold:pixelsize=16:antialias=true:hinting=true
+!urxvt*italicFont: xft:Source Code Pro for Powerline:italic:pixelsize=16:antialias=true:hinting=true
+!urxvt*boldItalicFont: xft:Source Code Pro for Powerline:bold:italic:pixelsize=16:antialias=true
+!
+!urxvt*letterSpace: 0 
 
-urxvt*letterSpace: 0 
+urxvt*font: xft:Ubuntu Mono derivative Powerline:pixelsize=16:antialias=true:hinting=true
+urxvt*boldFont: xft:Ubuntu Mono derivative Powerline:bold:pixelsize=16:antialias=true:hinting=true
+urxvt*italicFont: xft:Ubuntu Mono derivative Powerline:italic:pixelsize=16:antialias=true:hinting=true
+urxvt*boldItalicFont: xft:Ubuntu Mono derivative Powerline:bold:italic:pixelsize=16:antialias=true
+
+urxvt*letterSpace: 0

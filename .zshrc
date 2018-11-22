@@ -10,7 +10,12 @@ export ZSH=/home/jan/.oh-my-zsh
 # ZSH_THEME="agnoster"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
+# Powerlevel9k settings
 POWERLEVEL9K_MODE="nerdfont-complete"
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir vcs) 
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
+
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -89,6 +94,7 @@ export LANG=en_US.UTF-8
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
+
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
