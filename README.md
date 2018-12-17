@@ -53,6 +53,9 @@ I am currently trying out a system of organizing my dotfiles which allows me to 
 * metasploit
 * binwalk
 * masscan
+* zaproxy
+* burp
+* tcpdump
 
 * gnu-netcat [aur]
 
