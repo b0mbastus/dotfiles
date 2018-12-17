@@ -76,6 +76,12 @@ I am currently trying out a system of organizing my dotfiles which allows me to 
 * ipython
 * numpy
 
+## Manually Installed
+* yay
+* nerd-fonts
+* oh-my-zsh
+* powerlevel9k
+
 ```
 NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
 sda           8:0    0 931.5G  0 disk 
