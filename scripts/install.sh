@@ -113,3 +113,12 @@ fi
 if [[ ! -e ${HOME}/.config/awesome ]]; then
     ln -s ${DOTFILES_DIR}/.config/awesome ${HOME}/.config/awesome
 fi
+
+# rofi/
+if [[ -d ${HOME}/.config/rofi && ! -L ${HOME}/.config/rofi ]]; then
+    mv ${HOME}/.config/rofi ${HOME}/.config/rofi.old.`timestamp`
+    ln -s ${DOTFILES_DIR}/.config/rofi ${HOME}/.config/rofi
+fi
+if [[ ! -e ${HOME}/.config/rofi ]]; then
+    ln -s ${DOTFILES_DIR}/.config/rofi ${HOME}/.config/rofi
+fi
