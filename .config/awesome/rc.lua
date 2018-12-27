@@ -1,7 +1,5 @@
 --[[
     Awesome WM configuration by Jan Hanke
-    
-    based on a lot of other Awesome WM configs
 --]]
 
 -- Required libraries
@@ -402,9 +400,18 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
 	
-	-- Custom
+    -- Custom
+    -- Keyboard Layout Switcher
 	awful.key({ "Mod1" }, "Shift_L", function() awful.spawn("sh /home/jan/scripts/switch_layout.sh") end,
-			  {description = "switch keyboard layout", group = "launcher"})
+              {description = "switch keyboard layout", group = "launcher"}),
+
+    -- Application Launcher
+    awful.key({ modkey }, "d",
+        function()
+            awful.spawn.with_shell("rofi -show combi")
+        end,
+        {description = "open application launcher", group = "launcher"}
+    )
 )
 
 clientkeys = gears.table.join(
@@ -559,7 +566,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
+      }, properties = { titlebars_enabled = false }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
