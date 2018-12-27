@@ -71,6 +71,9 @@ set textwidth=0
 set wrapmargin=0
 set nowrap
 
+" Activate clipboard
+set clipboard=unnamedplus
+
 " Toggle NERDTree with Ctrl+n
 map <C-n> :NERDTreeToggle<CR>
 

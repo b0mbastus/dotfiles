@@ -24,6 +24,10 @@ I am currently trying out a system of organizing my dotfiles which allows me to 
 * htop
 * atop
 
+* git
+* vim (gvim for the +-Register)
+* nvim
+
 * openvpn
 * veracrypt
 
@@ -39,6 +43,10 @@ I am currently trying out a system of organizing my dotfiles which allows me to 
 * npm
 
 * bc
+
+* mlocate
+* cronie
+* rofi
 
 ## Awesome WM
 * awesome
@@ -62,6 +70,10 @@ I am currently trying out a system of organizing my dotfiles which allows me to 
 ## Filemanager
 * ranger
 * nemo
+
+## Mail
+* thunderbird
+* neomutt
 
 ## locking
 * maim
