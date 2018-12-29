@@ -58,6 +58,9 @@ let g:powerline_pycmd="py3"
 " General "
 """""""""""
 
+" Leader Key
+let mapleader = " "
+
 " Sets how many lines of history VIM has to remember
 set history=700
 
@@ -86,6 +89,11 @@ set wildmenu
 
 " Show line numbers
 set number
+
+" Hybrid Numbers + Toggle
+set number relativenumber
+
+nnoremap <leader>l :set number! relativenumber!<CR>
 
 " Always show current position
 set ruler
