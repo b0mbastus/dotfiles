@@ -114,6 +114,9 @@ set smartcase
 " Highlight search results
 set hlsearch
 
+" Remove highlighted search results
+noremap <silent> <C-l> :nohl<CR><C-l>
+
 " Enable increment search
 set incsearch
 
