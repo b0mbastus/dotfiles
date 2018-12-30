@@ -2,11 +2,9 @@
 local awful         = require("awful")
 local gears			= require("gears")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
-
 local naughty = require("naughty")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
-
 
 local keys = {}
 
