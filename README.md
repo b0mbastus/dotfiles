@@ -78,15 +78,19 @@ I am currently trying out a system of organizing my dotfiles which allows me to 
 ## locking
 * maim
 * i3lock-color [aur]
-* imagemagick
+* (also uses imagemagick)
 
 ## Image Processing
 * gimp
 * inkscape
+* imagemagick
+* feh
+* sxiv
 
 ## Installed with pip
 * ipython
 * numpy
+* pipenv
 
 ## Manually Installed
 * yay
