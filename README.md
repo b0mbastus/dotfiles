@@ -2,7 +2,12 @@
 
 I am currently trying out a system of organizing my dotfiles which allows me to use them across my desktop and my laptop without majorly changing the files or using a different git repository or branch.
 
-# Required Software
+## Todo
+* rofi-based clipboard manager
+* create and integrate a .shortcuts file (Maybe also integrate with rofi)
+* style rofi
+
+## Required Software
 
 # AUR Packagemanager
 * yay
@@ -27,6 +32,8 @@ I am currently trying out a system of organizing my dotfiles which allows me to 
 * git
 * vim (gvim for the +-Register)
 * nvim
+
+* xclip
 
 * openvpn
 * veracrypt

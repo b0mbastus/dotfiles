@@ -113,6 +113,8 @@ alias activate="source ./bin/activate"
 
 alias lock="~/scripts/lock.sh"
 
+alias xclip="xclip -selection c"
+
 d="dirs -v | head -10"
 1="cd -"
 2="cd -2"
