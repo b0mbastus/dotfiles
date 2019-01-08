@@ -166,11 +166,11 @@ urxvt*depth:                            32
 !urxvt*boldItalicFont: xft:Droid Sans Mono for Powerline:bold:italic:pixelsize=16:antialias=true
 !urxvt*letterSpace: -1
 
-urxvt*font: xft:Ubuntu Mono derivative Powerline:pixelsize=18:antialias=true:hinting=true
-urxvt*boldFont: xft:Ubuntu Mono derivative Powerline:bold:pixelsize=18:antialias=true:hinting=true
-urxvt*italicFont: xft:Ubuntu Mono:italic:pixelsize=18:antialias=true:hinting=true
-urxvt*boldItalicFont: xft:Ubuntu Mono:bold:italic:pixelsize=18:antialias=true
-urxvt*letterSpace: 0
+!*.font: xft:Ubuntu Mono:pixelsize=14:antialias=true:hinting=true
+!*.boldFont: xft:Ubuntu Mono:bold:pixelsize=14:antialias=true:hinting=true
+!*.italicFont: xft:Ubuntu Mono:italic:pixelsize=14:antialias=true:hinting=true
+!*.boldItalicFont: xft:Ubuntu Mono:bold:italic:pixelsize=14:antialias=true
+!*.letterSpace: 0
 
 !urxvt*font: xft:Ubuntu Mono:pixelsize=18:antialias=true:hinting=true
 !urxvt*boldFont: xft:Ubuntu Mono:bold:pixelsize=18:antialias=true:hinting=true
