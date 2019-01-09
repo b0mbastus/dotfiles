@@ -32,8 +32,12 @@ I am currently trying out a system of organizing my dotfiles which allows me to 
 * git
 * vim (gvim for the +-Register)
 * nvim
+* emacs + spacemacs
+
+* gdb + gef
 
 * xclip
+* copyq (Clipboard Manager)
 
 * openvpn
 * veracrypt
@@ -54,6 +58,7 @@ I am currently trying out a system of organizing my dotfiles which allows me to 
 * mlocate
 * cronie
 * rofi
+
 
 ## Awesome WM
 * awesome
