@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# CURRENT ISSUES
+# * If file is present, it will always copy it and add a timestamp to the old file
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 DOTFILES_DIR=${DIR}/..
 
@@ -122,3 +125,26 @@ fi
 if [[ ! -e ${HOME}/.config/rofi ]]; then
     ln -s ${DOTFILES_DIR}/.config/rofi ${HOME}/.config/rofi
 fi
+
+# GDB + GDB-Dashboard and GEF
+# .gdbinit.d/
+if [[ -d ${HOME}/.gdbinit.d && ! -L ${HOME}/.gdbinit.d ]]; then
+    mv ${HOME}/.gdbinit.d ${HOME}/.gdbinit.d.old.`timestamp`
+    ln -s ${DOTFILES_DIR}/.gdbinit.d ${HOME}/.gdbinit.d
+fi
+if [[ ! -e ${HOME}/.gdbinit.d ]]; then
+    ln -s ${DOTFILES_DIR}/.gdbinit.d ${HOME}/.gdbinit.d
+fi
+
+# .gdbinit
+if [[ -f ${HOME}/.gdbinit && ! -L ${HOME}/.gdbinit ]]; then
+    mv ${HOME}/.gdbinit ${HOME}/.gdbinit.old.`timestamp`
+    ln -s ${DOTFILES_DIR}/.gdbinit $HOME
+fi
+if [[ ! -e ${HOME}/.gdbinit ]]; then
+    ln -s ${DOTFILES_DIR}/.gdbinit $HOME
+fi
+
+# .gdbinit-gef.py
+# Erases content of .gdbinit
+# wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh
