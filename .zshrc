@@ -115,6 +115,9 @@ alias lock="~/scripts/lock.sh"
 
 alias xclip="xclip -selection c"
 
+alias enable_loopback="pacmd load-module module-loopback latency_msec=5"
+alias disable_loopback="pacmd unload-module module-loopback"
+
 d="dirs -v | head -10"
 1="cd -"
 2="cd -2"
