@@ -14,8 +14,6 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
                       require("awful.hotkeys_popup.keys.vim")
 local lain          = require("lain")
 
-
-
 -- Custom Widgets
 taskrunner          = require("widgets.taskrunner")
 cpu_widget          = require("widgets.cpu-widget")
@@ -70,9 +68,6 @@ scripts = os.getenv("HOME") .. "/scripts"
 
 titlebar_height = 18
 
-
-
-
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.floating,
@@ -87,10 +82,6 @@ awful.layout.layouts = {
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier,
-    awful.layout.suit.corner.nw,
-    awful.layout.suit.corner.ne,
-    awful.layout.suit.corner.sw,
-    awful.layout.suit.corner.se,
 }
 -- }}}
 
@@ -201,14 +192,14 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+--[[
+    \ufb6e  ﭮ
+]]--
+
 awful.screen.connect_for_each_screen(function(s)
-    -- Wallpaper
     set_wallpaper(s)
 
-    -- Each screen has its own tag table.
-    -- awful.tag({ "1", "2", "3", "4" }, s, awful.layout.layouts[2])
-
-	awful.tag.add("1", {
+	awful.tag.add("1 ", {
 		icon = "",
 		layout = default_layout,
 		selected = true,
@@ -233,7 +224,7 @@ awful.screen.connect_for_each_screen(function(s)
 		screen = s,
 	})
 
-	awful.tag.add("5", {
+	awful.tag.add("5 ", {
 		icon = "",
 		layout = default_layout,
 		screen = s,

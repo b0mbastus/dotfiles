@@ -14,7 +14,7 @@ theme                                           = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/sleek"
 theme.wallpaper                                 = theme.dir .. "/wallpapers/arch-solarized.png"
 
-theme.font                                      = "SNFS Display Bold 8"
+theme.font                                      = "Ubuntu bold 10" --"SNFS Display Bold 8"
 theme.fg_normal                                 = "#ffffff"
 theme.fg_focus                                  = "#ffffff"
 theme.bg_normal                                 = "#202020"
@@ -49,7 +49,7 @@ theme.tasklist_maximized_horizontal             = ""
 theme.tasklist_maximized_vertical               = ""
 theme.tasklist_disable_icon                     = true
 
-theme.awesome_icon                              = theme.dir .."/icons/awesome.png"
+theme.awesome_icon                              = theme.dir .."/icons/awesome.png" -- \uf303 
 theme.submenu_icon                              = theme.dir .."/icons/submenu.png"
 theme.taglist_squares_sel                       = theme.dir .. "/icons/taglist/squarefw.png"
 theme.taglist_squares_unsel                     = theme.dir .. "/icons/taglist/squarew.png"

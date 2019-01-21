@@ -7,6 +7,8 @@
  */
 // LAPTOP: static char *font = "Ubuntu Mono derivative Powerline:pixelsize=14:antialias=true:autohint=true";
 static char *font = "Ubuntu Mono:pixelsize=12:antialias=true:autohint=true";
+// static char *font = "UbuntuMono Nerd Font:pixelsize=10:antialias=true:autohint=true";
+// static char *font = "SauceCodePro Nerd Font Mono:pixelsize=11:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
