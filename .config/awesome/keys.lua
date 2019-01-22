@@ -121,7 +121,7 @@ keys.globalkeys = gears.table.join(
 	
     -- Custom
     -- Keyboard Layout Switcher
-	awful.key({ "Mod1" }, "Shift_L", function() awful.spawn("sh /home/jan/scripts/switch_layout.sh") end,
+	awful.key({ "Mod1"}, "0", function() awful.spawn("sh /home/jan/scripts/switch_layout.sh") end,
               {description = "switch keyboard layout", group = "launcher"}),
 
     -- Application Launcher
