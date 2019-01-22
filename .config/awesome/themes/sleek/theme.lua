@@ -14,7 +14,7 @@ theme                                           = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/sleek"
 theme.wallpaper                                 = theme.dir .. "/wallpapers/arch-solarized.png"
 
-theme.font                                      = "Ubuntu bold 10" --"SNFS Display Bold 8"
+theme.font                                      = "Ubuntu Mono Nerd Font Complete Mono 12" --"Ubuntu bold 10" --"SNFS Display Bold 8"
 theme.fg_normal                                 = "#ffffff"
 theme.fg_focus                                  = "#ffffff"
 theme.bg_normal                                 = "#202020"

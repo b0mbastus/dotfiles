@@ -206,25 +206,31 @@ awful.screen.connect_for_each_screen(function(s)
 		screen = s,
 	})
 
-	awful.tag.add("2", {
+	awful.tag.add("2 ", {
 		icon = "",
 		layout = default_layout,
 		screen = s,
 	})
 
-	awful.tag.add("3", {
+	awful.tag.add("3 ", {
 		icon = "",
 		layout = default_layout,
 		screen = s,
 	})
 	
-	awful.tag.add("4", {
+	awful.tag.add("4 ", {
 		icon = "",
 		layout = default_layout,
 		screen = s,
 	})
 
 	awful.tag.add("5 ", {
+		icon = "",
+		layout = default_layout,
+		screen = s,
+	})
+
+	awful.tag.add("6 ", {
 		icon = "",
 		layout = default_layout,
 		screen = s,
