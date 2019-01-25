@@ -59,6 +59,8 @@ I am currently trying out a system of organizing my dotfiles which allows me to 
 * cronie
 * rofi
 
+* nasm
+
 
 ## Awesome WM
 * awesome
