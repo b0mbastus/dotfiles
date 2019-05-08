@@ -2,6 +2,10 @@
 export TERM="st-256color"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+if [[ -d ${HOME}/anaconda3/bin ]]; then
+	export PATH=$HOME/anaconda3/bin:$PATH
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH=/home/jan/.oh-my-zsh
 
