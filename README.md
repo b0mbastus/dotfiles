@@ -66,6 +66,12 @@ I am currently trying out a system of organizing my dotfiles which allows me to 
 * awesome
 * lain-git [aur]
 
+## Blue Filter
+* redshift
+
+## Pretty ls command
+* lsd
+
 ## Hacking
 * radare2
 * strace
