@@ -19,6 +19,7 @@ I am currently trying out a system of organizing my dotfiles which allows me to 
 * chromium
 * discord [aur]
 * mupdf
+* postman
 
 # Shell
 * st or urxvt
@@ -35,6 +36,8 @@ I am currently trying out a system of organizing my dotfiles which allows me to 
 * emacs + spacemacs
 
 * gdb + gef
+
+* httpie
 
 * xclip
 * copyq (Clipboard Manager)
