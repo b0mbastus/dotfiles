@@ -2,6 +2,9 @@
 export TERM="st-256color"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Flutter
+export PATH=/home/jan/lib/flutter/bin:$PATH
+
 if [[ -d ${HOME}/anaconda3/bin ]]; then
 	alias anaconda_navigator="$HOME/anaconda3/bin/anaconda-navigator > /dev/null 2>&1 &"
 	export PATH_SAVE=$PATH

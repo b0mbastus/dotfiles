@@ -20,6 +20,7 @@ I am currently trying out a system of organizing my dotfiles which allows me to 
 * discord [aur]
 * mupdf
 * postman
+* ghidra
 
 # Shell
 * st or urxvt
