@@ -122,6 +122,7 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 alias activate="source ./bin/activate"
 
 alias lock="~/scripts/lock.sh"
+alias hacking="~/scripts/hacking.sh"
 
 alias xclip="xclip -selection c"
 
