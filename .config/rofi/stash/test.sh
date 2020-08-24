@@ -35,13 +35,14 @@ function show_stash() {
 	selection="$(($selection + 1))"
 	
 	line=$(sed "${selection}q;d" $INPUT)
-	echo "Do something with $selection: $line"
+	echo -e "Do something with $selection: $line"
+	echo -e $line
 
 	# Copy to clipboard
 
 	IFS=";"
 	read -r var data <<< "$line"
-	echo "$data" | xclip -selection c
+	echo -n "$data" | xclip -selection c
 	echo "$var"
 	echo "$data"
 	IFS=$OLDIFS

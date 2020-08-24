@@ -5,53 +5,43 @@ INPUT=data.csv
 function show_stash() {
 	OLDIFS=$IFS
 
-	#output=()
-	declare -a data
-	declare -a output
-
+	declare -a input
+	
+	# Read from file, split it into key and value and add it to an array
 	IFS=";"
 	while read var data	
 	do
-		#echo "$var: $data"
-		output+=("$var: $data")
+		input+=("$var: $data")
 	done < $INPUT
 	IFS=$OLDIFS
 
-	length=${#output[@]}
-
-	echo "TEST ${!output[@]}"
-
-	for i in "${!output[@]}"
+	# Concatenate list into a string rofi can use
+	output=""
+	length=${#input[@]}
+	for i in "${!input[@]}"
 	do
 		if [ $i -eq "$(($length - 1))" ]; then
-			echo "Bingo!"
+			output+="${input[$i]}"
 		else
-			echo ${output[$i]}
+			output+="${input[$i]}\n"
 		fi
 	done
 
-
 	# rofi 
-	echo -e ${output[@]}
-
-	temp=${output[@]}
-	echo -e ${temp%$'\n'}
-	selection=$(echo -e ${output[@]} | rofi -dmenu -format i)
+	selection=$(echo -e $output | rofi -dmenu -format i -p "Stash")
 
 	# Increment index by 1 because
 	# rofi gives us an index (0..N) but sed starts counting at 1 (1..N+1)
 	selection="$(($selection + 1))"
 	
 	line=$(sed "${selection}q;d" $INPUT)
-	echo "Do something with $selection: $line"
+	#echo -e "Do something with $selection: $line"
+	#echo -e $line
 
 	# Copy to clipboard
-
 	IFS=";"
 	read -r var data <<< "$line"
-	echo "$data" | xclip -selection c
-	echo "$var"
-	echo "$data"
+	echo -n "$data" | xclip -selection c
 	IFS=$OLDIFS
 }
 
@@ -64,7 +54,7 @@ function find_key() {
 function exists_key {
 	key=$1
 	result_count=$(grep ${key} $INPUT | wc -l)
-	echo "Exists key $1 = $result_count"
+	#echo "Exists key $1 = $result_count"
 	if [ $result_count -gt 0 ]; then
 		return 1
 	fi
@@ -102,6 +92,8 @@ elif [ "$1" == "del" ] && [ "$2" != "" ] && [ $# == 2 ]; then
 	if [ "$?" != "0" ]; then
 		# Delete key
 		del_key $2
+	else
+		echo "Key $2 does not exist"
 	fi
 else
 	# Unknown command
