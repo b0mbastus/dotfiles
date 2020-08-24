@@ -5,22 +5,37 @@ INPUT=data.csv
 function show_stash() {
 	OLDIFS=$IFS
 
-	output=()
+	#output=()
+	declare -a data
+	declare -a output
 
 	IFS=";"
 	while read var data	
 	do
 		#echo "$var: $data"
-		output+=("$var: $data\n")
+		output+=("$var: $data")
 	done < $INPUT
 	IFS=$OLDIFS
 
-	# for entry in ${output[$i]}; do
-	# 	echo $entry
-	# done
+	length=${#output[@]}
+
+	echo "TEST ${!output[@]}"
+
+	for i in "${!output[@]}"
+	do
+		if [ $i -eq "$(($length - 1))" ]; then
+			echo "Bingo!"
+		else
+			echo ${output[$i]}
+		fi
+	done
+
 
 	# rofi 
-	#echo -e ${output[@]} | rofi -dmenu
+	echo -e ${output[@]}
+
+	temp=${output[@]}
+	echo -e ${temp%$'\n'}
 	selection=$(echo -e ${output[@]} | rofi -dmenu -format i)
 
 	# Increment index by 1 because
@@ -34,7 +49,7 @@ function show_stash() {
 
 	IFS=";"
 	read -r var data <<< "$line"
-	echo "$data" | xclip
+	echo "$data" | xclip -selection c
 	echo "$var"
 	echo "$data"
 	IFS=$OLDIFS
