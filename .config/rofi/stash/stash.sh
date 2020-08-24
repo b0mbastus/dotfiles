@@ -74,6 +74,16 @@ function del_key() {
 	echo "Deleted key $1"
 }
 
+function clear_stash() {
+	> $INPUT
+	echo "Stash was cleared"
+}
+
+function backup_stash() {
+	# TODO
+	echo "Backing up the stash"
+}
+
 # If argument 1 is not present or emtpy
 if [ "$1" == "" ] || [ $# -eq 0 ]; then
 	show_stash
@@ -85,7 +95,7 @@ elif [ "$1" == "set" ] && [ "$2" != "" ] && [ $# == 3 ]; then
 		del_key $2
 	fi
 	# Create Key
-	set_key $2 $3
+	set_key $2 "$3"
 elif [ "$1" == "del" ] && [ "$2" != "" ] && [ $# == 2 ]; then
 	# Check if exists
 	exists_key $2
@@ -95,6 +105,8 @@ elif [ "$1" == "del" ] && [ "$2" != "" ] && [ $# == 2 ]; then
 	else
 		echo "Key $2 does not exist"
 	fi
+elif [ "$1" == "clear" ]; then
+	clear_stash
 else
 	# Unknown command
 	echo "Unknown command!"
@@ -102,5 +114,6 @@ else
 	echo "stash - for searching and copying a value from the stash"
 	echo "stash set <var> <value> - for setting a variable to a value"
 	echo "stash del <var> - deletes the variable from the stash if it exists"
+	echo "stash clear - deletes the entire stash"
 fi
 
