@@ -5,13 +5,6 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Flutter
 export PATH=/home/jan/lib/flutter/bin:$PATH
 
-if [[ -d ${HOME}/anaconda3/bin ]]; then
-	alias anaconda_navigator="$HOME/anaconda3/bin/anaconda-navigator > /dev/null 2>&1 &"
-	export PATH_SAVE=$PATH
-	alias enable_anaconda="export PATH=$HOME/anaconda3/bin:$PATH"
-	alias disable_anaconda="export PATH=$PATH_SAVE"
-fi
-
 # Path to your oh-my-zsh installation.
 export ZSH=/home/jan/.oh-my-zsh
 

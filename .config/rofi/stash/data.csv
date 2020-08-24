@@ -1,0 +1,7 @@
+ip;192.168.178.71
+name;jan
+var1;hello world
+var2;"Hello World"
+semicolon;10;20;30
+semicolon2;This; in fact; contains semicolons
+semicolon3;"Hello; World!"

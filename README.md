@@ -22,6 +22,11 @@ I am currently trying out a system of organizing my dotfiles which allows me to 
 * postman
 * ghidra
 
+# Bluetooth
+* bluez
+* bluez-utils
+* btlejack (via pip3)
+
 # Shell
 * st or urxvt
 * zsh
@@ -40,6 +45,7 @@ I am currently trying out a system of organizing my dotfiles which allows me to 
 
 * httpie
 
+* greenclip/rofi-greenclip (+ rofi = clipboard manager)
 * xclip
 * copyq (Clipboard Manager)
 
