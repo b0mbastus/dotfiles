@@ -1,48 +1,55 @@
-/**
- * ROFI Color theme
- * User: milouse
- * Copyright: Étienne Deparis
- */
-
 * {
-    selected-normal-foreground:  rgba ( 248, 248, 242, 100 % );
-    foreground:                  rgba ( 248, 248, 242, 100 % );
-    normal-foreground:           @foreground;
-    alternate-normal-background: rgba ( 39, 40, 34, 0 % );
-    red:                         rgba ( 220, 50, 47, 100 % );
-    selected-urgent-foreground:  rgba ( 248, 248, 242, 100 % );
-    blue:                        rgba ( 38, 139, 210, 100 % );
-    urgent-foreground:           rgba ( 249, 38, 114, 100 % );
-    alternate-urgent-background: rgba ( 39, 40, 34, 0 % );
-    active-foreground:           rgba ( 166, 226, 42, 100 % );
-    lightbg:                     rgba ( 238, 232, 213, 100 % );
-    selected-active-foreground:  rgba ( 166, 226, 42, 100 % );
-    alternate-active-background: rgba ( 39, 40, 34, 0 % );
-    background:                  rgba ( 39, 40, 34, 93 % );
-    bordercolor:                 rgba ( 0, 43, 54, 100 % );
-    alternate-normal-foreground: @foreground;
-    normal-background:           rgba ( 39, 40, 34, 0 % );
-    lightfg:                     rgba ( 88, 104, 117, 100 % );
-    selected-normal-background:  rgba ( 20, 20, 17, 100 % );
+	font: "Ubuntu Mono NerdFont Mono 16";
+
+    spacing:                     0px;
+	accent: #ff00ff;
     border-color:                @foreground;
-    spacing:                     2;
-    separatorcolor:              rgba ( 230, 219, 116, 100 % );
-    urgent-background:           rgba ( 39, 40, 34, 0 % );
-    selected-urgent-background:  rgba ( 249, 38, 114, 100 % );
-    alternate-urgent-foreground: @urgent-foreground;
+    bordercolor:                 #4e9a06;
+    separatorcolor:              @bordercolor;
+
+	prompt-background:			 #4e9a06;
+	scrollbar-background:		 @background;
+	scrollbar-handle:		 	 #4e9a06;
+
+    background:                  #141414;
+    foreground:                  #dedede;
     background-color:            rgba ( 0, 0, 0, 0 % );
-    alternate-active-foreground: @active-foreground;
+
+    normal-foreground:           @foreground;
+    normal-background:           rgba ( 39, 40, 34, 0 % );
+    urgent-foreground:           rgba ( 249, 38, 114, 100 % );
+    urgent-background:           rgba ( 39, 40, 34, 0 % );
+    active-foreground:           rgba ( 166, 226, 42, 100 % );
     active-background:           rgba ( 39, 40, 34, 0 % );
+
+    selected-normal-foreground:  #dedede;
+    selected-normal-background:  #020202;
+    selected-active-foreground:  rgba ( 166, 226, 42, 100 % );
     selected-active-background:  rgba ( 20, 20, 17, 100 % );
+    selected-urgent-foreground:  rgba ( 248, 248, 242, 100 % );
+    selected-urgent-background:  rgba ( 249, 38, 114, 100 % );
+
+    alternate-normal-background: #2a2a2a;
+    alternate-normal-foreground: @foreground;
+    alternate-active-foreground: @active-foreground;
+    alternate-active-background: rgba ( 39, 40, 34, 0 % );
+    alternate-urgent-foreground: @urgent-foreground;
+    alternate-urgent-background: rgba ( 39, 40, 34, 0 % );
+
+    red:                         rgba ( 220, 50, 47, 100 % );
+    blue:                        rgba ( 38, 139, 210, 100 % );
+    lightbg:                     rgba ( 238, 232, 213, 100 % );
+    lightfg:                     rgba ( 88, 104, 117, 100 % );
 }
 #window {
     background-color: @background;
-    border:           1;
-    padding:          5;
+    border:           0;
+    padding:          0;
 }
 #mainbox {
-    border:  0;
-    padding: 0;
+    //border:  2;
+    //padding: 5;
+	//border-color: @bordercolor;
 }
 #message {
     border:       2px 0px 0px ;
@@ -53,7 +60,8 @@
     text-color: @foreground;
 }
 #listview {
-    fixed-height: 0;
+	dynamic: true;
+    //fixed-height: 0;
     border:       2px 0px 0px ;
     border-color: @separatorcolor;
     spacing:      2px ;
@@ -62,7 +70,7 @@
 }
 #element {
     border:  0;
-    padding: 1px ;
+    padding: 5px;
 }
 #element.normal.normal {
     background-color: @normal-background;
@@ -101,10 +109,12 @@
     text-color:       @alternate-active-foreground;
 }
 #scrollbar {
-    width:        4px ;
+    width:        5px ;
     border:       0;
-    handle-width: 8px ;
+    handle-width: 18px ;
     padding:      0;
+	handle-color:	@scrollbar-handle;
+	background-color: @scrollbar-background;
 }
 #mode-switcher {
     border:       2px 0px 0px ;
@@ -117,24 +127,35 @@
 #inputbar {
     spacing:    0;
     text-color: @normal-foreground;
-    padding:    1px ;
+    padding:    0px ;
+	//padding: 10 10 10 10;
 }
 #case-indicator {
     spacing:    0;
     text-color: @normal-foreground;
 }
 #entry {
+	font: "Ubuntu Mono NerdFont Mono bold 20";
     spacing:    0;
     text-color: @normal-foreground;
+	padding: 10 10 10 10;
 }
 #prompt {
-    spacing:    0;
-    text-color: @normal-foreground;
+    spacing:    10;
+	font: "Ubuntu Mono NerdFont Mono bold 20";
+	//font: "Monoid 20";
+	background-color: @prompt-background;
+	text-color: @foreground;
+	padding: 10 10 10 10;
+	highlight: underline;
 }
 #inputbar {
     children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
 #textbox-prompt-colon {
+	font: "Ubuntu Mono NerdFont Mono bold 20";
+	background-color: @prompt-background;
+	padding: 10 10 10 0;
     expand:     false;
     str:        ":";
     margin:     0px 0.3em 0em 0em ;
