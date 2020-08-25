@@ -1,6 +1,7 @@
 #!/bin/bash
 
-INPUT=data.csv
+STASH_PATH=$HOME/.config/rofi/stash/
+INPUT=$STASH_PATH/data.csv
 
 function show_stash() {
 	OLDIFS=$IFS
@@ -80,7 +81,7 @@ function clear_stash() {
 }
 
 function backup_stash() {
-	# TODO
+	cp $INPUT $STASH_PATH/data.csv.bak
 	echo "Backing up the stash"
 }
 
@@ -107,6 +108,8 @@ elif [ "$1" == "del" ] && [ "$2" != "" ] && [ $# == 2 ]; then
 	fi
 elif [ "$1" == "clear" ]; then
 	clear_stash
+elif [ "$1" == "backup" ]; then
+	backup_stash
 else
 	# Unknown command
 	echo "Unknown command!"
