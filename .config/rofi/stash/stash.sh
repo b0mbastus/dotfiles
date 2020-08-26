@@ -29,7 +29,7 @@ function show_stash() {
 	done
 
 	# rofi 
-	selection=$(echo -e $output | rofi -dmenu -format i -p "Stash")
+	selection=$(echo -e $output | rofi -dmenu -i -format i -p "Stash")
 
 	# Increment index by 1 because
 	# rofi gives us an index (0..N) but sed starts counting at 1 (1..N+1)

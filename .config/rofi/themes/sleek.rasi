@@ -1,11 +1,9 @@
 * {
-	font: "Ubuntu Mono NerdFont Mono 16";
 
-    spacing:                     0px;
 	accent: #ff00ff;
-    border-color:                @foreground;
-    bordercolor:                 #4e9a06;
-    separatorcolor:              @bordercolor;
+
+    border-color:                #4e9a06;
+    separatorcolor:              @border-color;
 
 	prompt-background:			 #4e9a06;
 	scrollbar-background:		 @background;
@@ -13,38 +11,40 @@
 
     background:                  #141414;
     foreground:                  #dedede;
-    background-color:            rgba ( 0, 0, 0, 0 % );
 
     normal-foreground:           @foreground;
-    normal-background:           rgba ( 39, 40, 34, 0 % );
-    urgent-foreground:           rgba ( 249, 38, 114, 100 % );
-    urgent-background:           rgba ( 39, 40, 34, 0 % );
-    active-foreground:           rgba ( 166, 226, 42, 100 % );
-    active-background:           rgba ( 39, 40, 34, 0 % );
+    normal-background:           @background; //rgba ( 39, 40, 34, 0 % );
+    urgent-foreground:           #ff00ff; //rgba ( 249, 38, 114, 100 % );
+    urgent-background:           #ff00ff; //rgba ( 39, 40, 34, 0 % );
+    active-foreground:           #4e9a06; //#ff00ff; //rgba ( 166, 226, 42, 100 % );
+    active-background:           @normal-background; //rgba ( 39, 40, 34, 0 % );
 
-    selected-normal-foreground:  #dedede;
-    selected-normal-background:  #020202;
-    selected-active-foreground:  rgba ( 166, 226, 42, 100 % );
-    selected-active-background:  rgba ( 20, 20, 17, 100 % );
+    selected-normal-foreground:  #ffffff; //#dedede;
+    selected-normal-background:  #404040;
+    selected-active-foreground:  #81ff0a; //rgba ( 166, 226, 42, 100 % );
+    selected-active-background:  @selected-normal-background; //rgba ( 20, 20, 17, 100 % );
     selected-urgent-foreground:  rgba ( 248, 248, 242, 100 % );
     selected-urgent-background:  rgba ( 249, 38, 114, 100 % );
 
     alternate-normal-background: #2a2a2a;
-    alternate-normal-foreground: @foreground;
-    alternate-active-foreground: @active-foreground;
+    alternate-normal-foreground: @normal-foreground;
+    alternate-active-foreground: #ff00ff; //@active-foreground;
     alternate-active-background: rgba ( 39, 40, 34, 0 % );
     alternate-urgent-foreground: @urgent-foreground;
     alternate-urgent-background: rgba ( 39, 40, 34, 0 % );
 
-    red:                         rgba ( 220, 50, 47, 100 % );
-    blue:                        rgba ( 38, 139, 210, 100 % );
-    lightbg:                     rgba ( 238, 232, 213, 100 % );
-    lightfg:                     rgba ( 88, 104, 117, 100 % );
+	// Default Global Values
+	font: "Ubuntu Mono NerdFont Mono 16";
+    background-color:            @background;
+    spacing:                     0px;
 }
 #window {
     background-color: @background;
     border:           0;
     padding:          0;
+
+	anchor: 		  center;
+	location: 		  center;
 }
 #mainbox {
     //border:  2;
@@ -60,8 +60,9 @@
     text-color: @foreground;
 }
 #listview {
-	dynamic: true;
-    //fixed-height: 0;
+	fixed-height: 		false;
+	dynamic: 			true;
+
     border:       2px 0px 0px ;
     border-color: @separatorcolor;
     spacing:      2px ;
