@@ -1,6 +1,7 @@
-* {
+// Sleek - A work in progress theme
 
-	accent: #ff00ff;
+* {
+	unused: #ff00ff;
 
     border-color:                #4e9a06;
     separatorcolor:              @border-color;
@@ -13,25 +14,29 @@
     foreground:                  #dedede;
 
     normal-foreground:           @foreground;
-    normal-background:           @background; //rgba ( 39, 40, 34, 0 % );
-    urgent-foreground:           #ff00ff; //rgba ( 249, 38, 114, 100 % );
-    urgent-background:           #ff00ff; //rgba ( 39, 40, 34, 0 % );
-    active-foreground:           #4e9a06; //#ff00ff; //rgba ( 166, 226, 42, 100 % );
-    active-background:           @normal-background; //rgba ( 39, 40, 34, 0 % );
-
-    selected-normal-foreground:  #ffffff; //#dedede;
-    selected-normal-background:  #404040;
-    selected-active-foreground:  #81ff0a; //rgba ( 166, 226, 42, 100 % );
-    selected-active-background:  @selected-normal-background; //rgba ( 20, 20, 17, 100 % );
-    selected-urgent-foreground:  rgba ( 248, 248, 242, 100 % );
-    selected-urgent-background:  rgba ( 249, 38, 114, 100 % );
-
+    normal-background:           @background;
     alternate-normal-background: #2a2a2a;
     alternate-normal-foreground: @normal-foreground;
-    alternate-active-foreground: #ff00ff; //@active-foreground;
-    alternate-active-background: rgba ( 39, 40, 34, 0 % );
+
+    urgent-foreground:           @unused;
+    urgent-background:           @unused;
     alternate-urgent-foreground: @urgent-foreground;
-    alternate-urgent-background: rgba ( 39, 40, 34, 0 % );
+    alternate-urgent-background: @unused;
+
+    active-foreground:           #4e9a06;
+    active-background:           @normal-background;
+
+    selected-normal-foreground:  #ffffff;
+    selected-normal-background:  #404040;
+
+    selected-active-foreground:  #81ff0a;
+    selected-active-background:  @selected-normal-background;
+    alternate-active-foreground: @unused;
+    alternate-active-background: @unused;
+
+    selected-urgent-foreground:  @unused;
+    selected-urgent-background:  @unused;
+
 
 	// Default Global Values
 	font: "Ubuntu Mono NerdFont Mono 16";
@@ -43,8 +48,9 @@
     border:           0;
     padding:          0;
 
-	anchor: 		  center;
-	location: 		  center;
+	anchor: 		  north;
+	location: 		  north;
+	y-offset: 		  30%;
 }
 #mainbox {
     //border:  2;
