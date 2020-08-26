@@ -130,6 +130,14 @@ keys.globalkeys = gears.table.join(
             awful.spawn.with_shell("rofi -show combi")
         end,
         {description = "open application launcher", group = "launcher"}
+    ),
+
+    -- Key Value Store
+    awful.key({ modkey }, "c",
+        function()
+            awful.spawn.with_shell("/home/jan/.config/rofi/stash/stash.sh")
+        end,
+        {description = "open key value store", group = "launcher"}
     )
 )
 
