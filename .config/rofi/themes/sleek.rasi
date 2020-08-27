@@ -2,6 +2,7 @@
 
 * {
 	unused: #ff00ff;
+	test:	#00ffff;
 
     border-color:                #4e9a06;
     separatorcolor:              @border-color;
@@ -31,8 +32,8 @@
 
     selected-active-foreground:  #81ff0a;
     selected-active-background:  @selected-normal-background;
-    alternate-active-foreground: @unused;
-    alternate-active-background: @unused;
+    alternate-active-foreground: @active-foreground;
+    alternate-active-background: @alternate-normal-background;
 
     selected-urgent-foreground:  @unused;
     selected-urgent-background:  @unused;
