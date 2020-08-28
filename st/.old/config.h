@@ -5,15 +5,10 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-// static char *font = "mono:pixelsize=14:antialias=true:autohint=true";
-// static char *font2[] = { "JoyPixels:pixelsize=10:antialias=true:autohint=true" };
-static char *font =  "FiraCode Nerd Font:pixelsize=10:antialias=true:autohint=true";
-//static char *font =   "UbuntuMono Nerd Font:pixelsize=10:antialias=true:autohint=true";
-static char *font2[] = { "mono:pixelsize=10:antialias=true:autohint=true" };
-//static char *font =  "mono:pixelsize=10:antialias=true:autohint=true";
-//static char *font2[] = { "Ubuntu Nerd Font:pixelsize=10:antialias=true:autohint=true" };
-//static char *font2[] = { "FiraCode Nerd Font:pixelsize=10:antialias=true:autohint=true" };
-//static char *font2[] = { "MesloLGS NF:pixelsize=14:antialias=true:autohint=true" };
+// LAPTOP: static char *font = "Ubuntu Mono derivative Powerline:pixelsize=14:antialias=true:autohint=true";
+static char *font = "Ubuntu Mono:pixelsize=12:antialias=true:autohint=true";
+// static char *font = "UbuntuMono Nerd Font:pixelsize=10:antialias=true:autohint=true";
+// static char *font = "SauceCodePro Nerd Font Mono:pixelsize=11:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -38,9 +33,9 @@ static float chscale = 1.0;
 /*
  * word delimiter string
  *
- * More advanced example: L" `'\"()[]{}"
+ * More advanced example: " `'\"()[]{}"
  */
-wchar_t *worddelimiters = L" ";
+char *worddelimiters = " ";
 
 /* selection timeouts (in milliseconds) */
 static unsigned int doubleclicktimeout = 300;
@@ -49,14 +44,9 @@ static unsigned int tripleclicktimeout = 600;
 /* alt screens */
 int allowaltscreen = 1;
 
-/*
- * draw latency range in ms - from new content/keypress/etc until drawing.
- * within this range, st draws when content stops arriving (idle). mostly it's
- * near minlatency, but it waits longer for slow updates to avoid partial draw.
- * low minlatency will tear/flicker more, as it can "detect" idle too early.
- */
-static double minlatency = 8;
-static double maxlatency = 33;
+/* frames per second st should at maximum draw to the screen */
+static unsigned int xfps = 120;
+static unsigned int actionfps = 30;
 
 /*
  * blinking timeout (set to 0 to disable blinking) for the terminal blinking
@@ -65,28 +55,9 @@ static double maxlatency = 33;
 static unsigned int blinktimeout = 800;
 
 /*
- * interval (in milliseconds) between each successive call to ximspot. This
- * improves terminal performance while not reducing functionality to those
- * whom need XIM support.
- */
-int ximspot_update_interval = 1000;
-
-/*
  * thickness of underline and bar cursors
  */
 static unsigned int cursorthickness = 2;
-
-/*
- * 1: render most of the lines/blocks characters without using the font for
- *    perfect alignment between cells (U2500 - U259F except dashes/diagonals).
- *    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
- * 0: disable (render all U25XX glyphs normally from the font).
- */
-const int boxdraw = 1;
-const int boxdraw_bold = 1;
-
-/* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
-const int boxdraw_braille = 1;
 
 /*
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
@@ -112,41 +83,45 @@ char *termname = "st-256color";
  *
  *	stty tabs
  */
-unsigned int tabspaces = 8;
+unsigned int tabspaces = 4;
 
 /* bg opacity */
-float alpha = 1.0;
+unsigned int alpha = 0xed;
 
-/* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-        /* 8 normal colors */
-        [0] = "#282828", /* black   */
-        [1] = "#c51d1a", /* red     */
-        [2] = "#19cb00", /* green   */
-        [3] = "#b58900", /* yellow  */
-        [4] = "#225bf0", /* blue    */
-        [5] = "#d33682", /* magenta */
-        [6] = "#2aa198", /* cyan    */
-        [7] = "#eee8d5", /* white   */
+	/* 8 normal colors */
+	[0] = "#282828", /* black   */
+	[1] = "#c51d1a", /* red     */
+	[2] = "#19cb00", /* green   */
+	[3] = "#b58900", /* yellow  */
+	[4] = "#225bf0", /* blue    */
+	[5] = "#d33682", /* magenta */
+	[6] = "#2aa198", /* cyan    */
+	[7] = "#eee8d5", /* white   */
 
-        /* 8 bright colors */
-        [8]  = "#525252", /* black   */
-        [9]  = "#cb4b16", /* red     */
-        [10] = "#859900", /* green   */
-        [11] = "#657b83", /* yellow  */
-        [12] = "#268bd2", /* blue    */
-        [13] = "#6c71c4", /* magenta */
-        [14] = "#93a1a1", /* cyan    */
-        [15] = "#fdf6e3", /* white   */
+	/* 8 bright colors */
+	[8]  = "#525252", /* black   */
+	[9]  = "#cb4b16", /* red     */
+	[10] = "#859900", /* green   */
+	[11] = "#657b83", /* yellow  */
+	[12] = "#268bd2", /* blue    */
+	[13] = "#6c71c4", /* magenta */
+	[14] = "#93a1a1", /* cyan    */
+	[15] = "#fdf6e3", /* white   */
 
-        /* special colors */
-        [256] = "#080808", /* background */
-        [257] = "#cdcdcd", /* foreground */
+	/* special colors */
+	[256] = "#080808", /* background */
+	[257] = "#cdcdcd", /* foreground */
 };
+
+/*
+ * Default colors (colorname index)
+ * foreground, background, cursor, reverse cursor
+ */
 unsigned int defaultfg = 257; //15;
 unsigned int defaultbg = 256; //0;
-unsigned int defaultcs = 257; //15;
-unsigned int defaultrcs = 0;
+static unsigned int defaultcs = 257; //15;
+static unsigned int defaultrcs = 0;
 
 /*
  * Default shape of cursor
@@ -182,7 +157,6 @@ static unsigned int defaultattr = 11;
  */
 ResourcePref resources[] = {
 		{ "font",         STRING,  &font },
-		{ "fontalt0",     STRING,  &font2[0] },
 		{ "color0",       STRING,  &colorname[0] },
 		{ "color1",       STRING,  &colorname[1] },
 		{ "color2",       STRING,  &colorname[2] },
@@ -199,19 +173,18 @@ ResourcePref resources[] = {
 		{ "color13",      STRING,  &colorname[13] },
 		{ "color14",      STRING,  &colorname[14] },
 		{ "color15",      STRING,  &colorname[15] },
-		{ "background",   STRING,  &colorname[258] },
-		{ "foreground",   STRING,  &colorname[259] },
-		{ "cursorColor",  STRING,  &colorname[256] },
+		{ "background",   STRING,  &colorname[256] },
+		{ "foreground",   STRING,  &colorname[257] },
 		{ "termname",     STRING,  &termname },
 		{ "shell",        STRING,  &shell },
+		{ "xfps",         INTEGER, &xfps },
+		{ "actionfps",    INTEGER, &actionfps },
 		{ "blinktimeout", INTEGER, &blinktimeout },
 		{ "bellvolume",   INTEGER, &bellvolume },
 		{ "tabspaces",    INTEGER, &tabspaces },
-		{ "borderpx",     INTEGER, &borderpx },
 		{ "cwscale",      FLOAT,   &cwscale },
 		{ "chscale",      FLOAT,   &chscale },
-		{ "alpha",        FLOAT,   &alpha },
-		{ "ximspot_update_interval", INTEGER, &ximspot_update_interval },
+		{ "alpha",      INTEGER,   &alpha },
 };
 
 /*
@@ -226,23 +199,20 @@ static MouseShortcut mshortcuts[] = {
 
 /* Internal keyboard shortcuts. */
 #define MODKEY Mod1Mask
-#define TERMMOD (Mod1Mask|ShiftMask)
 
 MouseKey mkeys[] = {
 	/* button               mask            function        argument */
-	{ Button4,              XK_NO_MOD,      kscrollup,      {.i =  1} },
-	{ Button5,              XK_NO_MOD,      kscrolldown,    {.i =  1} },
-	{ Button4,              TERMMOD,        zoom,           {.f =  +1} },
-	{ Button5,              TERMMOD,        zoom,           {.f =  -1} },
+	{ Button4,              ShiftMask,      kscrollup,      {.i =  1} },
+	{ Button5,              ShiftMask,      kscrolldown,    {.i =  1} },
+	{ Button4,              MODKEY,         kscrollup,      {.i =  1} },
+	{ Button5,              MODKEY,         kscrolldown,    {.i =  1} },
+	{ Button4,              MODKEY|ShiftMask,         zoom,      {.f =  +1} },
+	{ Button5,              MODKEY|ShiftMask,         zoom,    {.f =  -1} },
 };
 
-static char *openurlcmd[] = { "/bin/sh", "-c", "st-urlhandler", "externalpipe", NULL };
-
-static char *copyurlcmd[] = { "/bin/sh", "-c",
-    "tmp=$(sed 's/.*│//g' | tr -d '\n' | grep -aEo '(((http|https|gopher|gemini|ftp|ftps|git)://|www\\.)[a-zA-Z0-9.]*[:]?[a-zA-Z0-9./@$&%?$#=_-~]*)|((magnet:\\?xt=urn:btih:)[a-zA-Z0-9]*)' | uniq | sed 's/^www./http:\\/\\/www\\./g' ); IFS=; [ ! -z $tmp ] && echo $tmp | dmenu -i -p 'Copy which url?' -l 10 | tr -d '\n' | xclip -selection clipboard",
+static char *openurlcmd[] = { "/bin/sh", "-c",
+    "xurls | uniq | dmenu -l 10 | xargs -r xdg-open",
     "externalpipe", NULL };
-
-static char *copyoutput[] = { "/bin/sh", "-c", "st-copyout", "externalpipe", NULL };
 
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
@@ -250,36 +220,32 @@ static Shortcut shortcuts[] = {
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
-	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
-	{ MODKEY,               XK_Home,        zoomreset,      {.f =  0} },
-	{ MODKEY,               XK_c,           clipcopy,       {.i =  0} },
+	{ MODKEY|ShiftMask,     XK_Prior,       zoom,           {.f = +1} },
+	{ MODKEY|ShiftMask,     XK_Next,        zoom,           {.f = -1} },
+	{ MODKEY,		XK_Home,	zoomreset,	{.f =  0} },
 	{ ShiftMask,            XK_Insert,      clippaste,      {.i =  0} },
+	{ MODKEY,               XK_c,           clipcopy,       {.i =  0} },
 	{ MODKEY,               XK_v,           clippaste,      {.i =  0} },
-	{ XK_ANY_MOD,		Button2,	selpaste,	{.i =  0} },
-	{ MODKEY,               XK_Num_Lock,    numlock,        {.i =  0} },
+	{ MODKEY,               XK_p,           selpaste,       {.i =  0} },
+	{ MODKEY,		XK_Num_Lock,	numlock,	{.i =  0} },
 	{ MODKEY,               XK_Control_L,   iso14755,       {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 	{ MODKEY,               XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ MODKEY,               XK_Page_Down,   kscrolldown,    {.i = -1} },
-	{ MODKEY,               XK_k,           kscrollup,      {.i =  1} },
-	{ MODKEY,               XK_j,           kscrolldown,    {.i =  1} },
-	{ MODKEY,               XK_Up,          kscrollup,      {.i =  1} },
-	{ MODKEY,               XK_Down,        kscrolldown,    {.i =  1} },
-	{ MODKEY,               XK_u,           kscrollup,      {.i = -1} },
-	{ MODKEY,               XK_d,           kscrolldown,    {.i = -1} },
-	{ MODKEY,		XK_s,		changealpha,	{.f = -0.05} },
-	{ MODKEY,		XK_a,		changealpha,	{.f = +0.05} },
-	{ TERMMOD,              XK_Up,          zoom,           {.f = +1} },
-	{ TERMMOD,              XK_Down,        zoom,           {.f = -1} },
-	{ TERMMOD,              XK_K,           zoom,           {.f = +1} },
-	{ TERMMOD,              XK_J,           zoom,           {.f = -1} },
-	{ TERMMOD,              XK_U,           zoom,           {.f = +2} },
-	{ TERMMOD,              XK_D,           zoom,           {.f = -2} },
-	{ MODKEY,               XK_l,           externalpipe,   {.v = openurlcmd } },
-	{ MODKEY,               XK_y,           externalpipe,   {.v = copyurlcmd } },
-	{ MODKEY,               XK_o,           externalpipe,   {.v = copyoutput } },
+	{ MODKEY,            	XK_k,  		kscrollup,      {.i =  1} },
+	{ MODKEY,            	XK_j,   	kscrolldown,    {.i =  1} },
+	{ MODKEY,            	XK_Up,  	kscrollup,      {.i =  1} },
+	{ MODKEY,            	XK_Down,   	kscrolldown,    {.i =  1} },
+	{ MODKEY,	        XK_u,		kscrollup,      {.i = -1} },
+	{ MODKEY,  		XK_d,		kscrolldown,   	{.i = -1} },
+	{ MODKEY|ShiftMask,     XK_Up,          zoom,           {.f = +1} },
+	{ MODKEY|ShiftMask,     XK_Down,        zoom,           {.f = -1} },
+	{ MODKEY|ShiftMask,     XK_K,           zoom,           {.f = +1} },
+	{ MODKEY|ShiftMask,     XK_J,           zoom,           {.f = -1} },
+	{ MODKEY|ShiftMask,     XK_U,           zoom,           {.f = +2} },
+	{ MODKEY|ShiftMask,     XK_D,           zoom,           {.f = -2} },
+    	{ MODKEY,		XK_l,		externalpipe,	{ .v = openurlcmd } },
 };
 
 /*
