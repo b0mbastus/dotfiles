@@ -31,6 +31,7 @@ This is my version of the simple terminal from [suckless.org](https://st.suckles
 + Scrollback
 + font2
 + updated to latest version 0.8.2
++ clipboard (for copy on selection)
 
 ## Installation for newbs
 
